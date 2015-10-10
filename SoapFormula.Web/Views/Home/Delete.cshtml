@@ -1,0 +1,17 @@
+﻿@using System.Web.Mvc.Html
+@using SoapFormula.Common.Entities
+@model IEnumerable<SoapFormula.Common.Entities.Category>
+@{
+    Layout = null;
+}
+
+<h2>Delete</h2>
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+{
+    <p>Удалить категорию</p>
+    @Html.DropDownList("Category");//("Name", ViewBag.Category as SelectList);
+    <input type="submit" name="Удалить" />
+}
+@Html.ActionLink("back to main page", "Index")
+
+

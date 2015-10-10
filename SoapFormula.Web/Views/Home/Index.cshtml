@@ -1,4 +1,26 @@
-﻿@{
+﻿@using SoapFormula.Common.Entities
+@model IQueryable<Category>
+@{
+    Layout = null;
+}
+<h1> SOAPFORMULA</h1>
+@Html.ActionLink("Создать категорию", "Create")|
+@Html.ActionLink("Удалить категорию", "Delete")|<br />
+
+@foreach (var c in Model)
+{
+    <div class="">
+        <p>категория товара:@c.Name @c.Id</p>
+        @Html.ActionLink("Редактировать", "Edit", new { id = c.Id })|
+        @Html.ActionLink("просмотр категории", "Get", new { id = c.Id })|
+    </div>
+
+}
+
+
+
+
+@*@{
     ViewBag.Title = "Home Page";
 }
 
@@ -28,4 +50,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
