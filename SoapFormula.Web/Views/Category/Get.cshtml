@@ -1,0 +1,30 @@
+﻿@model SoapFormula.Common.Entities.Category
+@{
+    ViewBag.Title = "AboutCategory";
+}
+
+<h2>AboutCategory</h2>
+<table>
+    <tr>
+        <th>
+            you chosen category: @Model.Name
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>
+            products in this category:
+            @foreach (var c in @Model.Products)
+            {
+                @c.Name.ToString();
+            }
+
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.ActionLink("back to main page", "Index")
+        </th>
+    </tr>
+</table>
+
