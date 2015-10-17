@@ -13,27 +13,26 @@ namespace SoapFormula.Web.Controllers
     public class CategoryController : Controller
     {
         private IKernel kernel;
-        private IRepository repo;
+        private IRepository repository;
 
         public CategoryController()
         {
             this.kernel = new StandardKernel(new LibraryModule());
-            this.repo = kernel.Get<IRepository>();
+            this.repository = kernel.Get<IRepository>();
         }
-        
+       
         public ActionResult Index()
         {
-            var category = repo.Get<Category>();
+            var category = repository.Get<Category>();
 
             return View(category);
         }
-
-        [HttpGet]
-        public ActionResult Get(int id)
+        
+        public ActionResult Details(int id)
         {
-            var category = repo.Get<Category>(id);
+            var category = repository.Get<Category>(id);
 
-            return View("Get", category);
+            return View(category);
         }
 
         public ActionResult Create()
@@ -44,49 +43,49 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Create(Category category)
         {
-            repo.Add(category);
-            repo.Save();
+            repository.Add(category);
+            repository.Save();
 
             return Redirect("Index");
         }
 
-        [HttpGet]
         public ActionResult Delete(int id)
         {
-            var category = repo.Get<Category>(id);
+            var category = repository.Get<Category>(id);
+
             return View(category);
         }
 
         [HttpPost]
-        public ActionResult Deleting(int id)
+        public ActionResult Delete(Category category)
         {
-            var containsId = repo.Get<Category>(id);
-            repo.Delete(containsId);
-            repo.Save();
+            var categoryForDeleting = repository.Get<Category>(category.Id);
+            repository.Delete(categoryForDeleting);
+            repository.Save();
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
-        [HttpGet]
         public ActionResult Edit(int id)
         {
-            var category = repo.Get<Category>(id);
+            var category = repository.Get<Category>(id);
+
             return View(category);
         }
 
         [HttpPost]
-        public ActionResult Editing(Category category)
+        public ActionResult Edit(Category category)
         {
-            foreach (var c in repo.Get<Category>())
+            foreach (var c in repository.Get<Category>())
             {
                 if (c.Id == category.Id)
                 {
                     c.Name = category.Name;
                 }
             }
-            repo.Save();
+            repository.Save();
             
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SoapFormula.Common.Entities.Category>
+﻿@model SoapFormula.Common.Entities.Category
 
 @{
     ViewBag.Title = "Create";
@@ -12,10 +12,10 @@
     </tr>
     <tr>
         <th>
-            @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+            @using (Html.BeginForm())
             {
-                @Html.Hidden("Id","Id")
-                @Html.TextBox("Name")
+                @Html.HiddenFor(i=>i.Id)
+                @Html.TextBoxFor(i=>i.Name)
                 <input type="submit" name="create" />
             }
         </th>

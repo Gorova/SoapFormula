@@ -12,10 +12,10 @@
         </th>
     <tr>
         <th>
-            @using (Html.BeginForm("Editing", "Category", FormMethod.Post))
+            @using (Html.BeginForm())
             {
-                @Html.Hidden("Id","Id")
-                @Html.TextBox("Name", Model.Name)
+                @Html.HiddenFor(i=>i.Id)
+                @Html.TextBoxFor(i=>i.Name)
                 <input type="submit" value="save"/>
             }
         </th>
