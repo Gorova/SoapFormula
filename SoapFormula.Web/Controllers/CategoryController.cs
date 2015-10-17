@@ -46,7 +46,7 @@ namespace SoapFormula.Web.Controllers
             repository.Add(category);
             repository.Save();
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
