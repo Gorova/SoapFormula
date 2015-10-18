@@ -1,9 +1,9 @@
 ﻿@model SoapFormula.Common.Entities.Category
 @{
-    ViewBag.Title = "AboutCategory";
+    ViewBag.Title = "More information";
 }
 
-<h2>AboutCategory</h2>
+<h2>More information</h2>
 <table>
     <tr>
         <th>
@@ -14,7 +14,7 @@
     <tr>
         <th>
             products in this category:
-            @foreach (var c in @Model.Products)
+            @foreach (var c in Model.Products)
             {
                 @c.Name
             }

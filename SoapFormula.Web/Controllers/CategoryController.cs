@@ -37,6 +37,7 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -76,13 +77,8 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Edit(Category category)
         {
-            foreach (var c in repository.Get<Category>())
-            {
-                if (c.Id == category.Id)
-                {
-                    c.Name = category.Name;
-                }
-            }
+            var categoryForEditig = repository.Get<Category>(category.Id);
+            categoryForEditig.Name = category.Name;
             repository.Save();
             
             return RedirectToAction("Index");
