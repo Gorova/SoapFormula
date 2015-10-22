@@ -1,10 +1,9 @@
-﻿@model SoapFormula.Common.Entities.Category
-
+﻿@model SoapFormula.Common.Entities.Manufacturer
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit Category</h2>
+<h2>Edit Manufacturer</h2>
 <table>
     <tr>
         <th>
@@ -12,18 +11,18 @@
         </th>
     </tr>
     <tr>
-        <th>
+        <td>
             @using (Html.BeginForm())
             {
-                @Html.HiddenFor(i=>i.Id)
-                @Html.TextBoxFor(i=>i.Name)
-                <input type="submit" value="save"/>
+                @Html.HiddenFor(i => i.Id)
+                @Html.TextBoxFor(i => i.Name)
+                <input type="submit" value="save" />
             }
-        </th>
+        </td>
     </tr>
     <tr>
-        <th>
+        <td>
             @Html.ActionLink("back to main page", "Index")
-        </th>
+        </td>
     </tr>
 </table>

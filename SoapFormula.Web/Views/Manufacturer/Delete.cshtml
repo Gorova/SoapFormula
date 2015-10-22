@@ -1,9 +1,10 @@
-﻿@model SoapFormula.Common.Entities.Category
+﻿@model SoapFormula.Common.Entities.Manufacturer
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete Category</h2>
+<h2>Delete Manufacturer</h2>
+
 <table>
     <tr>
         <th>
@@ -11,18 +12,18 @@
         </th>
     </tr>
     <tr>
-        <th>
-            @using(Html.BeginForm())
+        <td>
+            @using (Html.BeginForm())
             {
-                 @Html.HiddenFor(i=>i.Id)
+                @Html.HiddenFor(i => i.Id)
                 <input type="submit" value="DELETE"/>
             }
-        </th> 
+        </td>
     </tr>
     <tr>
-        <th>
+        <td>
             FOR CENCELING:
-            @Html.ActionLink("back to main page", "Index")
-        </th>
+            @Html.ActionLink("back to main page","Index")
+        </td>
     </tr>
 </table>

@@ -1,0 +1,30 @@
+﻿@model SoapFormula.Common.Entities.Manufacturer
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details Manufacturer</h2>
+
+<table>
+    <tr>
+        <th>
+            you chosen manufacturer: @Model.Name
+        </th>
+    </tr>
+    <tr>
+            <td>
+            products of manutacture:
+            @foreach (var c in Model.Products)
+            {
+               <li> @c.Name</li>
+            }
+            </td>
+        </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("back to main page", "Index")
+        </td>
+    </tr>
+
+
+</table>

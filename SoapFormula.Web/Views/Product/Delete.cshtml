@@ -1,0 +1,30 @@
+﻿@model SoapFormula.Common.Entities.Product
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Product</h2>
+
+<table>
+    <tr>
+        <th>
+            ARE YOU SHURE YOU WANT TO DELETE CATEGORY: @Model.Name
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(i => i.Id)
+                @*@Html.HiddenFor(i => i.ManufacturerId)*@
+                <input type="submit" value="DELETE" />
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>
+            FOR CENCELING:
+            @Html.ActionLink("back to main page", "Index")
+        </td>
+    </tr>
+</table>

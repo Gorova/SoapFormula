@@ -1,0 +1,29 @@
+﻿@model SoapFormula.Common.Entities.Manufacturer
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Manufacturer</h2>
+
+<table>
+    <tr>
+        <th>
+            write a manufacturer
+        </th> <th></th>
+    </tr>
+    <tr>
+        <td>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(i => i.Id)
+            @Html.TextBoxFor(i => i.Name)
+            <input type="submit" value="create"/>
+        }
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("back to main page","Index")
+        </td>
+    </tr>
+</table>

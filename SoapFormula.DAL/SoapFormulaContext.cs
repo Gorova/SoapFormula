@@ -21,6 +21,8 @@ namespace SoapFormula.DAL
 
         public DbSet<File> Files { get; set; }
 
+        public DbSet<Manufacturer> Manufacturers { get; set; } 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
@@ -31,7 +33,12 @@ namespace SoapFormula.DAL
                     m.ToTable("ProductsCategories");
                     m.MapLeftKey("CategoryId");
                     m.MapRightKey("ProductId");
-                }); 
+                });
+
+            modelBuilder.Entity<Product>()
+                .HasRequired<Manufacturer>(i => i.Manufacturer)
+                .WithMany(i => i.Products)
+                .HasForeignKey(i => i.ManufacturerId);
         }
     }
 }

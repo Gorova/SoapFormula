@@ -1,0 +1,33 @@
+﻿@model SoapFormula.Common.Entities.Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Product</h2>
+<table>
+    <tr>
+        <th>
+            edit category @Model.Name
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(i => i.Id)
+                <p> edit name</p>
+                @Html.TextBoxFor(i => i.Name)
+                <p>edit price</p>
+                @Html.TextBoxFor(i => i.Price)
+                <p>edit weight</p>
+                @Html.TextBoxFor(i => i.Weight)
+                <input type="submit" value="save" />
+            }
+         </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("back to main page", "Index")
+        </td>
+    </tr>
+</table>
