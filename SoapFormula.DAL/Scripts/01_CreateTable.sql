@@ -40,6 +40,5 @@ AND COLUMN_NAME = 'ManufacturerId'))
 	CONSTRAINT FK_Products_Manufacturers_ManufacturerId
 	FOREIGN KEY REFERENCES Manufacturers(Id)
 	
-	SELECT * FROM Products
-	SELECT * FROM Manufacturers
+	
 	

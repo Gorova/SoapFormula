@@ -18,9 +18,8 @@ namespace SoapFormula.Web.Controllers
 
         public ManufacturerController()
         {
-            this.kernel = new StandardKernel(new LibraryModule());
+            this.kernel = Kernel.Initialize();
             this.repository = kernel.Get<Repository>();
-
         }
         
         public ActionResult Index()
@@ -39,7 +38,6 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Create()
         {
-
             return View();
         }
 

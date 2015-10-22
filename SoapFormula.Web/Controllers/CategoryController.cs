@@ -17,7 +17,7 @@ namespace SoapFormula.Web.Controllers
 
         public CategoryController()
         {
-            this.kernel = new StandardKernel(new LibraryModule());
+            this.kernel = Kernel.Initialize();
             this.repository = kernel.Get<IRepository>();
         }
        
@@ -37,7 +37,6 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Create()
         {
-
             return View();
         }
 
