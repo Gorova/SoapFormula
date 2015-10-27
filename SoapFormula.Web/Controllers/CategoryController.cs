@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
@@ -12,7 +13,9 @@ using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController<T1, T2> : Controller 
+                                             where T1 : class 
+                                             where T2 : class 
     {
         private IKernel kernel;
         private IRepository repository;
@@ -25,15 +28,16 @@ namespace SoapFormula.Web.Controllers
        
         public ActionResult Index()
         {
-            var category = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(repository.Get<Category>());
-            return View(category);
+            var context = Mapper.Map<IEnumerable<T1>, IEnumerable<T2>>(repository.Get<T1>());
+
+            return View(context);
         }
         
         public ActionResult Details(int id)
         {
-            var category = repository.Get<Category>(id);
-
-            return View(category);
+            var context = Mapper.Map<T1, T2>(repository.Get<T1>(id));
+            
+            return View(context);
         }
 
         public ActionResult Create()
@@ -42,9 +46,10 @@ namespace SoapFormula.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Category category)
+        public ActionResult Create(T2 viewModel)
         {
-            repository.Add(category);
+            var context = Mapper.Map<T2,T1>(viewModel);
+            repository.Add(context);
             repository.Save();
 
             return RedirectToAction("Index");
@@ -52,16 +57,16 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Delete(int id)
         {
-            var category = repository.Get<Category>(id);
-
-            return View(category);
+            var context = Mapper.Map<T1, T2>(repository.Get<T>(id));
+            
+            return View(context);
         }
 
         [HttpPost]
-        public ActionResult Delete(Category category)
+        public ActionResult Delete(T2 viewModel)
         {
-            var categoryForDeleting = repository.Get<Category>(category.Id);
-            repository.Delete(categoryForDeleting);
+            var context = Mapper.Map<T2, T1>(viewModel);
+            repository.Delete(context);
             repository.Save();
 
             return RedirectToAction("Index");
@@ -69,16 +74,17 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Edit(int id)
         {
-            var category = repository.Get<Category>(id);
-
-            return View(category);
+            var context = Mapper.Map<T1, T2>(repository.Get<T>(id));
+            
+            return View(context);
         }
 
         [HttpPost]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(T2 viewModel)
         {
-            var categoryForEditig = repository.Get<Category>(category.Id);
-            categoryForEditig.Name = category.Name;
+            var context = Mapper.Map<T2, T1>(viewModel);
+            var categoryForEditig = repository.Get<Category>(context.Id);
+            categoryForEditig.Name = context.Name;
             repository.Save();
             
             return RedirectToAction("Index");
