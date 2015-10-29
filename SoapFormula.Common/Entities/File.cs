@@ -4,10 +4,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using SoapFormula.Common.Interface;
 
 namespace SoapFormula.Common.Entities
 {
-    public class File
+    public class File : IBase
     {
         public int Id { get; set; }
 

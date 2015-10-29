@@ -16,7 +16,7 @@ namespace SoapFormula.Web.Controllers
     {
        public ActionResult Index()
         {
-           return RedirectToAction("Index", "Manufacturer");
+           return View();
         }
         
         public ActionResult About()

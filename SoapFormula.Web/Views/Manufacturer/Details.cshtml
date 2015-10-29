@@ -1,4 +1,4 @@
-﻿@model SoapFormula.Common.Entities.Manufacturer
+﻿@model SoapFormula.Web.ViewModel.ManufacturerViewModel
 @{
     ViewBag.Title = "Details";
 }
@@ -13,11 +13,11 @@
     </tr>
     <tr>
             <td>
-            products of manutacture:
+            @*products of manutacture:
             @foreach (var c in Model.Products)
             {
                <li> @c.Name</li>
-            }
+            }*@
             </td>
         </tr>
     <tr>

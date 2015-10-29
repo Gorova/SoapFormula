@@ -13,78 +13,77 @@ using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class CategoryController<T1, T2> : Controller 
-                                             where T1 : class 
-                                             where T2 : class 
+    public class CategoryController : BaseController<Category,CategoryViewModel> 
     {
         private IKernel kernel;
         private IRepository repository;
 
-        public CategoryController()
+        public CategoryController() : base()
         {
             this.kernel = Kernel.Initialize();
             this.repository = kernel.Get<IRepository>();
         }
-       
-        public ActionResult Index()
-        {
-            var context = Mapper.Map<IEnumerable<T1>, IEnumerable<T2>>(repository.Get<T1>());
 
-            return View(context);
-        }
-        
-        public ActionResult Details(int id)
+        public override ActionResult Index()
         {
-            var context = Mapper.Map<T1, T2>(repository.Get<T1>(id));
-            
-            return View(context);
+            var category = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(repository.Get<Category>());
+
+            return View(category);
         }
 
-        public ActionResult Create()
+        public override ActionResult Details(int id)
+        {
+            var category = Mapper.Map<Category, CategoryViewModel>(repository.Get<Category>(id));
+
+            return View(category);
+        }
+
+        public override ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(T2 viewModel)
+        public override ActionResult Create(CategoryViewModel viewModel)
         {
-            var context = Mapper.Map<T2,T1>(viewModel);
-            repository.Add(context);
+            var category = Mapper.Map<CategoryViewModel, Category>(viewModel);
+            repository.Add(category);
             repository.Save();
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id)
+        public override ActionResult Delete(int id)
         {
-            var context = Mapper.Map<T1, T2>(repository.Get<T>(id));
-            
-            return View(context);
+            var category = Mapper.Map<Category, CategoryViewModel>(repository.Get<Category>(id));
+
+            return View(category);
         }
 
         [HttpPost]
-        public ActionResult Delete(T2 viewModel)
+        public override ActionResult Delete(CategoryViewModel viewModel)
         {
-            var context = Mapper.Map<T2, T1>(viewModel);
-            repository.Delete(context);
+            var categoryForDeleting = Mapper.Map<CategoryViewModel, Category>(viewModel);
+            var category = repository.Get<Category>(categoryForDeleting.Id);
+            repository.Delete(category);
             repository.Save();
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public override ActionResult Edit(int id)
         {
-            var context = Mapper.Map<T1, T2>(repository.Get<T>(id));
-            
-            return View(context);
+            var category = Mapper.Map<Category, CategoryViewModel>(repository.Get<Category>(id));
+
+            return View(category);
         }
 
         [HttpPost]
-        public ActionResult Edit(T2 viewModel)
+        public override ActionResult Edit(CategoryViewModel viewModel)
         {
-            var context = Mapper.Map<T2, T1>(viewModel);
-            var categoryForEditig = repository.Get<Category>(context.Id);
-            categoryForEditig.Name = context.Name;
+            var categoryForEditig = Mapper.Map<CategoryViewModel, Category>(viewModel);
+            var category= repository.Get<Category>(categoryForEditig.Id);
+            category.Name = viewModel.Name;
             repository.Save();
             
             return RedirectToAction("Index");

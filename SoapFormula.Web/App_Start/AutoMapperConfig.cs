@@ -13,12 +13,16 @@ namespace SoapFormula.Web.App_Start
         public static void RegisterMapping()
         {
             Mapper.CreateMap<Category, CategoryViewModel>();
+            Mapper.CreateMap<CategoryViewModel, Category>();
 
             Mapper.CreateMap<File, FileViewModel>();
+            Mapper.CreateMap<FileViewModel, File>();
 
             Mapper.CreateMap<Manufacturer, ManufacturerViewModel>();
-
+            Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
+            
             Mapper.CreateMap<Product, ProductViewModel>();
+            Mapper.CreateMap<ProductViewModel, Product>();
         }
     }
 }
