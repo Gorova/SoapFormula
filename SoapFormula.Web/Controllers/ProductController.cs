@@ -41,12 +41,10 @@ namespace SoapFormula.Web.Controllers
 
         public override ActionResult Create()
         {
-            var model = Mapper.Map<IEnumerable<Manufacturer>,IEnumerable<ManufacturerViewModel> >(repository.Get<Manufacturer>());
-            var model2 = new ProductViewModel();
-           model2.ManufacturerItems = from m in model
-                                     select new SelectListItem{ Text = m.Id.ToString(), Value = m.Name };
+            var m = new Product();
+            var m2 = Mapper.Map<Product, ProductViewModel>(m);
 
-           return View(model2);
+            return View(m2);
         }
 
         [HttpPost]
@@ -54,13 +52,6 @@ namespace SoapFormula.Web.Controllers
         {
             var product = Mapper.Map<ProductViewModel, Product>(viewModel);
             var manufacturer = Mapper.Map<Manufacturer, ManufacturerViewModel>(product.Manufacturer);
-            //product.Manufacturer = repository.Get<Manufacturer>().FirstOrDefault(i => i.Name == viewModel.Manufacturer)
-            //var manufacture =
-            //    Mapper.Map<ManufacturerViewModel, Manufacturer>(
-            //        repository.Get<ManufacturerViewModel>(viewModel.ManufacturerId));
-            //var man = repository.Get<Manufacturer>().FirstOrDefault(i => i.Name == manufacture.Name);
-            //if (man.Name != null)
-            //    product.Manufacturer = man;
             repository.Add(product);
             repository.Save();
             

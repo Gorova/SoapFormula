@@ -24,10 +24,10 @@
                 @Html.TextBoxFor(i => i.Price)
                 <p> write weight</p>
                 @Html.TextBoxFor(i => i.Weight)<br/>
-                <p>write manufacture</p>
+                <p>choose manufacture</p>
                 @Html.HiddenFor(i=>i.ManufacturerId)
-                @Html.DropDownListFor(i => i.ManufacturerItems, 
-                new SelectList(Model.ManufacturerItems, "Text", "Value"))<br/>
+                @Html.DropDownListFor(i => i.ManufacturerItems, Model.ManufacturerItems, "for choosing")
+//new SelectList(Model.ManufacturerItems), "", "Value")<br/>
                 <input type="submit" name="create"/>
             }
         </td>

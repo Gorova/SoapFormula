@@ -11,14 +11,12 @@ using SoapFormula.DAL.Repository.Interface;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class BaseController<TModel, TViewModel> : Controller
-                                     where TModel : class, IBase
-                                     where TViewModel : class 
+    public abstract class BaseController<TModel, TViewModel> : Controller where TModel : class, IBase where TViewModel : class 
     {
         private IKernel kernel;
         private IRepository repository;
 
-        public BaseController()
+        protected BaseController()
         {
             this.kernel = Kernel.Initialize();
             this.repository = kernel.Get<IRepository>();
@@ -33,14 +31,14 @@ namespace SoapFormula.Web.Controllers
 
         public virtual ActionResult Details(int id)
         {
-            var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+             var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return RedirectToAction("Index");
+            return View(context);
         }
 
         public virtual ActionResult Create()
         {
-            return RedirectToAction("Index");
+            return View();
         }
 
         [HttpPost]
@@ -50,14 +48,14 @@ namespace SoapFormula.Web.Controllers
             repository.Add(context);
             repository.Save();
 
-            return RedirectToAction("Index");
+            return View();
         }
 
         public virtual ActionResult Delete(int id)
         {
             var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return RedirectToAction("Index");
+            return View(context);
         }
 
         [HttpPost]
@@ -68,23 +66,22 @@ namespace SoapFormula.Web.Controllers
             repository.Delete(context);
             repository.Save();
 
-            return RedirectToAction("Index");
+            return View();
         }
 
         public virtual ActionResult Edit(int id)
         {
             var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return RedirectToAction("Index");
+            return View(context);
         }
 
         public virtual ActionResult Edit(TViewModel viewModel)
         {
             var context = Mapper.Map<TViewModel, TModel>(viewModel);
             var contextForEditing = repository.Get<TModel>(context.Id);
-           // contextForEditing = context;
 
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }

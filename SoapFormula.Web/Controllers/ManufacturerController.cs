@@ -41,7 +41,6 @@ namespace SoapFormula.Web.Controllers
         public override ActionResult Create()
         {
            
-            
             return View();
         }
 
