@@ -8,13 +8,16 @@ using Ninject;
 using SoapFormula.Bootstrap;
 using SoapFormula.Common.Interface;
 using SoapFormula.DAL.Repository.Interface;
+using SoapFormula.Web.ViewModel.Interface;
 
 namespace SoapFormula.Web.Controllers
 {
-    public abstract class BaseController<TModel, TViewModel> : Controller where TModel : class, IBase where TViewModel : class 
+    public abstract class BaseController<TModel, TViewModel> : Controller
+        where TModel : class, IBase
+        where TViewModel : class, IBaseViewModel
     {
         private IKernel kernel;
-        private IRepository repository;
+        protected IRepository repository;
 
         protected BaseController()
         {
@@ -24,16 +27,16 @@ namespace SoapFormula.Web.Controllers
 
         public virtual ActionResult Index()
         {
-            var context = Mapper.Map<IEnumerable<TModel>, IEnumerable<TViewModel>>(repository.Get<TModel>());
+            var model = Mapper.Map<IEnumerable<TModel>, IEnumerable<TViewModel>>(repository.Get<TModel>());
 
-            return View(context);
+            return View(model);
         }
 
         public virtual ActionResult Details(int id)
         {
-             var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return View(context);
+            return View(model);
         }
 
         public virtual ActionResult Create()
@@ -44,44 +47,46 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public virtual ActionResult Create(TViewModel viewModel)
         {
-            var context = Mapper.Map<TViewModel, TModel>(viewModel);
-            repository.Add(context);
+            var model = Mapper.Map<TViewModel, TModel>(viewModel);
+            repository.Add(model);
             repository.Save();
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         public virtual ActionResult Delete(int id)
         {
-            var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return View(context);
+            return View(model);
         }
 
         [HttpPost]
         public virtual ActionResult Delete(TViewModel viewModel)
         {
             var contextForDeleting = Mapper.Map<TViewModel, TModel>(viewModel);
-            var context = repository.Get<TModel>(contextForDeleting.Id);
-            repository.Delete(context);
+            var model = repository.Get<TModel>(contextForDeleting.Id);
+            repository.Delete(model);
             repository.Save();
 
-            return View();
+            return RedirectToAction("Index");
         }
-
+        
         public virtual ActionResult Edit(int id)
         {
-            var context = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return View(context);
+            return View(model);
         }
 
+        [HttpPost]
         public virtual ActionResult Edit(TViewModel viewModel)
         {
-            var context = Mapper.Map<TViewModel, TModel>(viewModel);
-            var contextForEditing = repository.Get<TModel>(context.Id);
-
-            return View();
+            var model = repository.Get<TModel>(viewModel.Id);
+            Mapper.Map(viewModel, model);
+            repository.Save();
+            
+            return RedirectToAction("Index");
         }
     }
 }

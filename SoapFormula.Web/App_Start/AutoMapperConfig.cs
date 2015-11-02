@@ -33,17 +33,14 @@ namespace SoapFormula.Web.App_Start
             Mapper.CreateMap<Manufacturer, ManufacturerViewModel>();
             Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
 
-            Mapper.CreateMap<Product, ProductViewModel>().ForMember(i => i.ManufacturerItems, map => map.MapFrom(p => Method(p)));
-            //Mapper.CreateMap<Product, ProductViewModel>()
-            //    .ForMember(i => i.ManufacturerItems, map => map.MapFrom(p => Method(p)))
-            //    .ForMember(i => i.ManufacturerId, map => map.MapFrom(p => p.Manufacturer.Id));
+            Mapper.CreateMap<Product, ProductViewModel>();//.ForMember(i => i.ManufacturerItems, map => map.MapFrom(p => Method(p.ManufacturerId)));
             Mapper.CreateMap<ProductViewModel, Product>();
         }
 
-        private static IEnumerable<SelectListItem> Method(Product p)
+        private static IEnumerable<SelectListItem> Method( int id)
         {
-            var a = repository.Get<Manufacturer>()
-                .Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString() });
+            var a = repository.Get<Manufacturer>().OrderBy(i=>i.Name)
+                .Select(i => new SelectListItem { Text = i.Name, Value = i.Id.ToString(), Selected = (i.Id==id)});
             return a;
         }
     }

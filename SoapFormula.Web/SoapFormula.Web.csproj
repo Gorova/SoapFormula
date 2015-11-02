@@ -186,6 +186,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\FileViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IBaseViewModel.cs" />
     <Compile Include="ViewModel\ManufacturerViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
   </ItemGroup>

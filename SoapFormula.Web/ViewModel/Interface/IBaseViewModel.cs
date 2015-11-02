@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoapFormula.Common.Interface
+namespace SoapFormula.Web.ViewModel.Interface
 {
-    public interface IBase
+    public interface IBaseViewModel
     {
         int Id { get; set; }
-
-        string Name { get; set; }
     }
 }
