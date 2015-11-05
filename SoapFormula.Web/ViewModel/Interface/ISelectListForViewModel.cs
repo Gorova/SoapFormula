@@ -7,6 +7,7 @@ namespace SoapFormula.Web.ViewModel.Interface
 {
     public interface ISelectListForViewModel
     {
-        IEnumerable<SelectListItem> Init<T> (IRepository repository) where T : class, IBase;
+        void Init (IRepository repository);
     }
 }
+ 

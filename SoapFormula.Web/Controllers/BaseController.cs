@@ -10,16 +10,20 @@ using SoapFormula.Web.ViewModel.Interface;
 namespace SoapFormula.Web.Controllers
 {
     public abstract class BaseController<TModel, TViewModel> : Controller
-        where TModel : class, IBase
-        where TViewModel : class, IBaseViewModel, ISelectListForViewModel
+        where TModel : class, IBase, new()
+        where TViewModel : class, IBaseViewModel, ISelectListForViewModel, new()
     {
         private IKernel kernel;
         protected IRepository repository;
+        protected TViewModel listViewModel;
+        protected TModel listModel;
         
         protected BaseController()
         {
             this.kernel = Kernel.Initialize();
             this.repository = kernel.Get<IRepository>();
+            this.listViewModel = new TViewModel();
+            this.listModel = new TModel();
         }
 
         public virtual ActionResult Index()
@@ -38,7 +42,10 @@ namespace SoapFormula.Web.Controllers
 
         public virtual ActionResult Create()
         {
-            return View();
+            var model = Mapper.Map(listModel, listViewModel);
+            model.Init(repository);
+           
+            return View(model);
         }
 
         [HttpPost]
@@ -72,6 +79,7 @@ namespace SoapFormula.Web.Controllers
         public virtual ActionResult Edit(int id)
         {
             var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            model.Init(repository);
 
             return View(model);
         }
