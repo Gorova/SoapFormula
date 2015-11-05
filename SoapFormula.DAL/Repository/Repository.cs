@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SoapFormula.DAL.Repository.Interface;
-using System.Data.Entity;
 
 namespace SoapFormula.DAL.Repository
 { 

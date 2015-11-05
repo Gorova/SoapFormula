@@ -1,4 +1,4 @@
-﻿@model SoapFormula.Common.Entities.Category
+﻿@model SoapFormula.Web.ViewModel.CategoryViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -16,6 +16,8 @@
             {
                 @Html.HiddenFor(i=>i.Id)
                 @Html.TextBoxFor(i=>i.Name)
+                <p> choose product for category </p>
+               // @Html.DropDownListFor(i => i.ProductId, Model.ProductItems)<br />
                 <input type="submit" name="create" />
             }
         </th>

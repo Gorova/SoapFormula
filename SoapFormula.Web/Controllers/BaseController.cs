@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Ninject;
@@ -14,11 +11,11 @@ namespace SoapFormula.Web.Controllers
 {
     public abstract class BaseController<TModel, TViewModel> : Controller
         where TModel : class, IBase
-        where TViewModel : class, IBaseViewModel
+        where TViewModel : class, IBaseViewModel, ISelectListForViewModel
     {
         private IKernel kernel;
         protected IRepository repository;
-
+        
         protected BaseController()
         {
             this.kernel = Kernel.Initialize();
