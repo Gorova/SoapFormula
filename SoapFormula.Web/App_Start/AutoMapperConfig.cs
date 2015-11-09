@@ -26,19 +26,10 @@ namespace SoapFormula.Web.App_Start
             Mapper.CreateMap<FileViewModel, File>();
 
             Mapper.CreateMap<Manufacturer, ManufacturerViewModel>();
-             //   .ForMember(i => i.Products, map => map.MapFrom(p => CreateListItems(p)));
             Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
                 
-
             Mapper.CreateMap<Product, ProductViewModel>();
             Mapper.CreateMap<ProductViewModel, Product>();
         }
-
-       //private static IEnumerable<SelectListItem> CreateListItems(Manufacturer m)
-       // {
-       //     var list = repository.Get<Product>()
-       //         .Select(i => new SelectListItem {Text = i.Name, Value = i.Id.ToString()});
-       //     return list;
-       // }
     }
 }
