@@ -1,4 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Services.Description;
+using AutoMapper;
 using Ninject;
 using SoapFormula.Bootstrap;
 using SoapFormula.Common.Entities;
@@ -29,7 +33,21 @@ namespace SoapFormula.Web.App_Start
             Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
                 
             Mapper.CreateMap<Product, ProductViewModel>();
-            Mapper.CreateMap<ProductViewModel, Product>();
+            Mapper.CreateMap<ProductViewModel, Product>()
+                .ForMember(i => i.Categories, map => map.MapFrom(p => (Method(p)))); 
+        }
+
+        static ICollection<Category> Method(ProductViewModel p)
+        {
+            var list = new List<Category>();
+            
+            foreach (var i in p.CategoryIds)
+            {
+               var m = repository.Get<Category>().FirstOrDefault(n => i == n.Id);
+               list.Add(m);
+            }
+            
+            return list;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace SoapFormula.Web.ViewModel
 
         public MultiSelectList CategoryItems { get; set; }
 
-        public int[] CategoryId { get; set; }
+        public int[] CategoryIds { get; set; }
 
         public IEnumerable<SelectListItem> FileItems { get; set; }
 
@@ -40,7 +40,7 @@ namespace SoapFormula.Web.ViewModel
                 });
 
             var categories = repository.Get<Category>()
-                .Select(i => new {Id = i.Id, Name = i.Name}).ToList();
+                .Select(i => new {i.Id, i.Name}).ToList();
             CategoryItems = new MultiSelectList(categories, "Id", "Name");
         } 
     }
