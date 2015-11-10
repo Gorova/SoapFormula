@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using Ninject;
 using SoapFormula.Bootstrap;
+using SoapFormula.Common.Entities;
 using SoapFormula.Common.Interface;
 using SoapFormula.DAL.Repository.Interface;
 using SoapFormula.Web.ViewModel.Interface;
