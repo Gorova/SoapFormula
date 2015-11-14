@@ -51,7 +51,7 @@ namespace SoapFormula.Web.Controllers
             var model = Mapper.Map<TViewModel, TModel>(viewModel);
             repository.Add(model);
             repository.Save();
-
+           
             return RedirectToAction("Index");
         }
 
