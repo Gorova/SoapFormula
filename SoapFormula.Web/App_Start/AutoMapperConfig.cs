@@ -1,15 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Linq;
-using AutoMapper;
-using Microsoft.Ajax.Utilities;
-using Ninject;
-using SoapFormula.Bootstrap;
+﻿using AutoMapper;
 using SoapFormula.Common.Entities;
-using SoapFormula.DAL.Repository.Interface;
 using SoapFormula.Web.ViewModel;
-using WebGrease.Css.Extensions;
 
 namespace SoapFormula.Web.App_Start
 {
@@ -27,8 +18,7 @@ namespace SoapFormula.Web.App_Start
             Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
                 
             Mapper.CreateMap<Product, ProductViewModel>();
-            Mapper.CreateMap<ProductViewModel, Product>()
-                .ForMember(i => i.Categories, map => map.MapFrom(p => p.CategoryIds.Select(i => new Category{ Id = i })));
+            Mapper.CreateMap<ProductViewModel, Product>();
         }
     }
    

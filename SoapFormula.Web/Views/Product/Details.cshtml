@@ -24,8 +24,17 @@
     </tr>
     <tr>
         <td>
-            Manufacture:@Model.ManufacturerId
-            
+            Manufacture:@Model.Manufacturer.Name
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <ul>
+            Categories: @foreach (var category in Model.Categories)
+                        {
+                        <li>@category.Name</li>
+                        }
+                </ul>
         </td>
     </tr>
     <tr>

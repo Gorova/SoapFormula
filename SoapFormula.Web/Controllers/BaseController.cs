@@ -26,14 +26,14 @@ namespace SoapFormula.Web.Controllers
         public virtual ActionResult Index()
         {
             var model = Mapper.Map<IEnumerable<TModel>, IEnumerable<TViewModel>>(repository.Get<TModel>());
-
+            
             return View(model);
         }
 
         public virtual ActionResult Details(int id)
         {
             var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
-
+            
             return View(model);
         }
 

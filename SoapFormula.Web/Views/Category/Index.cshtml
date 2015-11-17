@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @*@Html.DisplayNameFor(model => model.Name)*@
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th></th>
     </tr>
@@ -31,14 +31,10 @@
     }
     <tr>
         <td>
-            @Html.ActionLink("go to page 'PRODUCTS'", "Index", "Product")
+            @Html.ActionLink("back to main page", "Index", "Home")
         </td>
     </tr>
-    <tr>
-        <td>
-            @Html.ActionLink("go to page 'MANUFACTURE'", "Index", "Manufacturer")
-        </td>
-    </tr>
+    
 </table>
 
 

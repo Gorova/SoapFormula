@@ -27,7 +27,7 @@
                 <p>manufacturers for choosing</p>
                 @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems, "choose")<br />
                 <p> categories for choosing </p>
-                @Html.ListBoxFor(i => i.CategoryIds, Model.CategoryItems)<br/>
+                @Html.ListBoxFor(i => i.SelectedIds, Model.CategoryItems, "choose")<br/>
                <input type="submit" name="create"/>
             }
         </td>

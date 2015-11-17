@@ -6,6 +6,7 @@ using SoapFormula.Common.Entities;
 using SoapFormula.Common.Interface;
 using SoapFormula.DAL.Repository.Interface;
 using SoapFormula.Web.ViewModel.Interface;
+using System.ComponentModel.DataAnnotations;
 
 namespace SoapFormula.Web.ViewModel
 {
@@ -23,9 +24,13 @@ namespace SoapFormula.Web.ViewModel
 
         public IEnumerable<SelectListItem> ManufacturerItems { get; set; }
 
+        public Manufacturer Manufacturer { get; set; }
+
         public MultiSelectList CategoryItems { get; set; }
 
-        public int[] CategoryIds { get; set; }
+        public ICollection<Category> Categories { get; set; } 
+
+        public int[] SelectedIds { get; set; }
 
         public IEnumerable<SelectListItem> FileItems { get; set; }
 
@@ -35,9 +40,8 @@ namespace SoapFormula.Web.ViewModel
                 .Select(i => new SelectListItem
                 {
                     Text = i.Name,
-                    Value = i.Id.ToString(),
-                    
-                });
+                    Value = i.Id.ToString()
+                }).ToList();
 
             var categories = repository.Get<Category>()
                 .Select(i => new {i.Id, i.Name}).ToList();

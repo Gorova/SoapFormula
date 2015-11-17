@@ -13,16 +13,17 @@ namespace SoapFormula.Web.ViewModel
 
         public string Name { get; set; }
 
-        public IEnumerable<SelectListItem> Products { get; set; }
+        public MultiSelectList ProductItems { get; set; }
+
+        public ICollection<Product> Products { get; set; }
+
+        public int[] SelectedIds { get; set; }
 
         public void Init(IRepository repository)
         {
-            Products = repository.Get<Product>()
-                .Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                });
+            var products = repository.Get<Product>()
+                .Select(i => new {i.Id, i.Name}).ToList();
+            ProductItems = new MultiSelectList(products, "Id", "Name");
         } 
     }
 }
