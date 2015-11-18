@@ -13,14 +13,7 @@ namespace SoapFormula.Web.Controllers
         public override ActionResult Create(ProductViewModel viewModel)
         {
             var model = Mapper.Map<ProductViewModel, Product>(viewModel);
-            IList<Category> listCategories = new List<Category>();
-
-            foreach (var categoryId in viewModel.SelectedIds)
-            {
-                var category = repository.Get<Category>(categoryId);
-                listCategories.Add(category);
-            }
-            model.Categories = listCategories;
+            model.Categories = viewModel.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
             repository.Add(model);
             repository.Save();
 

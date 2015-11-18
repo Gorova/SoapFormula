@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations.Model;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Ninject;
-using SoapFormula.Bootstrap;
-using SoapFormula.Common.Entities;
-using SoapFormula.DAL.Repository.Interface;
+﻿using System.Web.Mvc;
 
 namespace SoapFormula.Web.Controllers
 {

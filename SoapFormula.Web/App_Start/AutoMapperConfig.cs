@@ -21,5 +21,4 @@ namespace SoapFormula.Web.App_Start
             Mapper.CreateMap<ProductViewModel, Product>();
         }
     }
-   
 }
