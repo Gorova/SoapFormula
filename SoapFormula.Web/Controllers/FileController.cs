@@ -1,6 +1,5 @@
-﻿namespace SoapFormula.Web.Controllers
+﻿using SoapFormula.Web.ViewModel;
+
+namespace SoapFormula.Web.Controllers
 {
-    //public class FileController : BaseController<File, FileViewModel>
-    //{
-    //}
 }

@@ -7,7 +7,7 @@ using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class CategoryController : BaseController<Category,CategoryViewModel> 
+    public class CategoryController : BaseController<Category, CategoryViewModel> 
     {
         [HttpPost]
         public override ActionResult Create(CategoryViewModel viewModel)
@@ -17,7 +17,7 @@ namespace SoapFormula.Web.Controllers
 
             foreach (var productId in viewModel.SelectedIds)
             {
-                var product = repository.Get<Product>().FirstOrDefault(i => i.Id == productId);
+                var product = repository.Get<Product>(productId);
                 listProducts.Add(product);
             }
             model.Products = listProducts;
@@ -32,14 +32,21 @@ namespace SoapFormula.Web.Controllers
         {
             var model = repository.Get<Category>(viewModel.Id);
             Mapper.Map(viewModel, model);
-            IList<Product> listProducts = new List<Product>();
+            model.Products = viewModel.SelectedIds.Select(i => repository.Get<Product>(i)).ToList();
+            repository.Save();
 
-            foreach (var productId in viewModel.SelectedIds)
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public override ActionResult Delete(CategoryViewModel viewModel)
+        {
+            var model = repository.Get<Category>(viewModel.Id);
+            if (model.Products.Count != 0)
             {
-                var product = repository.Get<Product>().FirstOrDefault(i => i.Id == productId);
-                listProducts.Add(product);
+                return View("NotDelete", model);
             }
-            model.Products = listProducts;
+            repository.Delete(model);
             repository.Save();
 
             return RedirectToAction("Index");

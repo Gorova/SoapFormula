@@ -17,7 +17,7 @@ namespace SoapFormula.Web.Controllers
 
             foreach (var categoryId in viewModel.SelectedIds)
             {
-                var category = repository.Get<Category>().FirstOrDefault(i => i.Id == categoryId);
+                var category = repository.Get<Category>(categoryId);
                 listCategories.Add(category);
             }
             model.Categories = listCategories;
@@ -32,15 +32,22 @@ namespace SoapFormula.Web.Controllers
         {
             var model = repository.Get<Product>(viewModel.Id);
             Mapper.Map(viewModel, model);
-            IList<Category> listCategories = new List<Category>();
+            model.Categories = viewModel.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
+            model.Manufacturer = repository.Get<Manufacturer>(viewModel.ManufacturerId);
+            repository.Save();
 
-            foreach (var categoryId in viewModel.SelectedIds)
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public override ActionResult Delete(ProductViewModel viewModel)
+        {
+            var model = repository.Get<Product>(viewModel.Id);
+            if (model.Categories.Count != 0)
             {
-                var category = repository.Get<Category>().FirstOrDefault(i => i.Id == categoryId);
-                listCategories.Add(category);
+                return View("NotDelete", model);
             }
-            model.Categories = listCategories;
-            model.Manufacturer = repository.Get<Manufacturer>().FirstOrDefault(i => i.Id == viewModel.ManufacturerId);
+            repository.Delete(model);
             repository.Save();
 
             return RedirectToAction("Index");

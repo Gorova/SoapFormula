@@ -1,6 +1,6 @@
 ﻿namespace SoapFormula.Common.Entities
 {
-    public class File //: IBase
+    public class File 
     {
         public int Id { get; set; }
 

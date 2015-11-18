@@ -26,11 +26,11 @@ namespace SoapFormula.Web.ViewModel
 
         public Manufacturer Manufacturer { get; set; }
 
+        public int[] SelectedIds { get; set; }
+
         public MultiSelectList CategoryItems { get; set; }
 
         public ICollection<Category> Categories { get; set; } 
-
-        public int[] SelectedIds { get; set; }
 
         public IEnumerable<SelectListItem> FileItems { get; set; }
 

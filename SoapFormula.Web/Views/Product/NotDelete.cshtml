@@ -1,0 +1,14 @@
+﻿@model SoapFormula.Common.Entities.Product
+@{
+    ViewBag.Title = "NotDelete";
+}
+
+<h2>deleting product @Model.Name is impossible until it has categories</h2>
+<ul>
+    @foreach (var category in Model.Categories)
+    {
+        <li>@category.Name</li>
+    }
+</ul>
+
+@Html.ActionLink("back to main page", "Index")

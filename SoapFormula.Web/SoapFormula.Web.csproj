@@ -266,6 +266,9 @@
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
+    <Content Include="Views\Manufacturer\NotDelete.cshtml" />
+    <Content Include="Views\Category\NotDelete.cshtml" />
+    <Content Include="Views\Product\NotDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

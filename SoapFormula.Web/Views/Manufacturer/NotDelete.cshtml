@@ -1,0 +1,13 @@
+﻿@model SoapFormula.Common.Entities.Manufacturer
+  @{  ViewBag.Title = "NotDelete";
+}
+
+<h2>deleting manufacrturer @Model.Name is impossible until it has products</h2>
+<ul>
+    @foreach (var product in Model.Products)
+    {
+        <li>@product.Name</li>
+    }
+</ul>
+@Html.ActionLink("back to main page", "Index")
+
