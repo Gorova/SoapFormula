@@ -18,8 +18,6 @@
                 @Html.HiddenFor(i=>i.Id)
                 <p> edit name</p>
                 @Html.TextBoxFor(i=>i.Name)
-                <p> choose products for edition</p>
-                @Html.ListBoxFor(i => i.SelectedIds, Model.ProductItems, "choosen")
                 <input type="submit" value="save"/>
             }
         </th>

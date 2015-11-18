@@ -9,6 +9,14 @@ namespace SoapFormula.Web.Controllers
 {
     public class ProductController : BaseController<Product, ProductViewModel>
     {
+        public override ActionResult Create()
+        {
+            var viewModel = new ProductViewModel();
+            viewModel.Init(repository);
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         public override ActionResult Create(ProductViewModel viewModel)
         {
@@ -30,6 +38,14 @@ namespace SoapFormula.Web.Controllers
             repository.Save();
 
             return RedirectToAction("Index");
+        }
+
+        public override ActionResult Edit(int id)
+        {
+            var model = Mapper.Map<Product,ProductViewModel>(repository.Get<Product>(id));
+            model.Init(repository);
+
+            return View(model);
         }
 
         [HttpPost]

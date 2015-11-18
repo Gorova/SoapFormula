@@ -7,23 +7,12 @@ using SoapFormula.Web.ViewModel.Interface;
 
 namespace SoapFormula.Web.ViewModel
 {
-    public class ManufacturerViewModel : IBaseViewModel, ISelectListForViewModel
+    public class ManufacturerViewModel : IBaseViewModel
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public MultiSelectList ProductItems { get; set; }
-
         public ICollection<Product> Products { get; set; }
-
-        public int[] SelectedIds { get; set; }
-
-        public void Init(IRepository repository)
-        {
-            var products = repository.Get<Product>()
-                .Select(i => new {i.Id, i.Name}).ToList();
-            ProductItems = new MultiSelectList(products, "Id", "Name");
-        } 
     }
 }

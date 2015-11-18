@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using AutoMapper;
+﻿using System.Web.Mvc;
 using SoapFormula.Common.Entities;
 using SoapFormula.Web.ViewModel;
 
@@ -9,29 +6,7 @@ namespace SoapFormula.Web.Controllers
 {
     public class CategoryController : BaseController<Category, CategoryViewModel> 
     {
-        [HttpPost]
-        public override ActionResult Create(CategoryViewModel viewModel)
-        {
-            var model = Mapper.Map<CategoryViewModel, Category>(viewModel);
-            model.Products = viewModel.SelectedIds.Select(i => repository.Get<Product>(i)).ToList();
-            repository.Add(model);
-            repository.Save();
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public override ActionResult Edit(CategoryViewModel viewModel)
-        {
-            var model = repository.Get<Category>(viewModel.Id);
-            Mapper.Map(viewModel, model);
-            model.Products = viewModel.SelectedIds.Select(i => repository.Get<Product>(i)).ToList();
-            repository.Save();
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
+       [HttpPost]
         public override ActionResult Delete(CategoryViewModel viewModel)
         {
             var model = repository.Get<Category>(viewModel.Id);

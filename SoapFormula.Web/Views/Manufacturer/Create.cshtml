@@ -17,8 +17,6 @@
         {
             @Html.HiddenFor(i => i.Id)
             @Html.TextBoxFor(i => i.Name)
-            <p> choose product</p>
-            @Html.ListBoxFor(i => i.SelectedIds, Model.ProductItems, "choose")<br />
             <input type="submit" value="create"/>
         }
         </td>
