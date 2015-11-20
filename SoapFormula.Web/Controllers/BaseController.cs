@@ -10,7 +10,7 @@ using SoapFormula.Web.ViewModel.Interface;
 namespace SoapFormula.Web.Controllers
 {
     public abstract class BaseController<TModel, TViewModel> : Controller
-        where TModel : class, IBase, new()
+        where TModel : class, new()
         where TViewModel : class, IBaseViewModel, new ()
     {
         private IKernel kernel;
@@ -24,16 +24,16 @@ namespace SoapFormula.Web.Controllers
 
         public virtual ActionResult Index()
         {
-            var model = Mapper.Map<IEnumerable<TModel>, IEnumerable<TViewModel>>(repository.Get<TModel>());
+            var viewmodel = Mapper.Map<IEnumerable<TModel>, IEnumerable<TViewModel>>(repository.Get<TModel>());
             
-            return View(model);
+            return View(viewmodel);
         }
 
         public virtual ActionResult Details(int id)
         {
-            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var viewmodel = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
             
-            return View(model);
+            return View(viewmodel);
         }
 
         public virtual ActionResult Create()
@@ -55,9 +55,9 @@ namespace SoapFormula.Web.Controllers
 
         public virtual ActionResult Delete(int id)
         {
-            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var viewmodel = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
 
-            return View(model);
+            return View(viewmodel);
         }
 
         [HttpPost]
@@ -72,9 +72,9 @@ namespace SoapFormula.Web.Controllers
         
         public virtual ActionResult Edit(int id)
         {
-            var model = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
+            var viewmodel = Mapper.Map<TModel, TViewModel>(repository.Get<TModel>(id));
            
-            return View(model);
+            return View(viewmodel);
         }
 
         [HttpPost]

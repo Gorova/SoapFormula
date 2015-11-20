@@ -1,6 +1,8 @@
-﻿namespace SoapFormula.Common.Entities
+﻿using SoapFormula.DAL.Entities;
+
+namespace SoapFormula.Common.DTO
 {
-    public class File 
+    public class FileDto
     {
         public int Id { get; set; }
 

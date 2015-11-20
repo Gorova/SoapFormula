@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using SoapFormula.Common.Interface;
+using SoapFormula.DAL.Entities;
 
-namespace SoapFormula.Common.Entities
+namespace SoapFormula.Common.DTO
 {
-    public class Category : IBase
+    public class CategoryDto : IBase
     {
         public int Id { get; set; }
 

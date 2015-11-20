@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using SoapFormula.Common.Interface;
 
-namespace SoapFormula.Common.Entities
+namespace SoapFormula.DAL.Entities
 {
-    public class Manufacturer : IBase
+    public class Manufacturer 
     {
         public int Id { get; set; }
 

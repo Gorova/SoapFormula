@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SoapFormula.Common.Entities;
+using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.App_Start

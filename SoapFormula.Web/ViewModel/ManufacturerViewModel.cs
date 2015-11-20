@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using SoapFormula.Common.Entities;
-using SoapFormula.DAL.Repository.Interface;
+using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel.Interface;
 
 namespace SoapFormula.Web.ViewModel

@@ -281,6 +281,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{e793a0cd-9d3d-4828-a907-5f16905a0c31}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoapFormula.Bootstrap\SoapFormula.Bootstrap.csproj">
       <Project>{74e33f41-1a66-42c9-bf47-ff431dc581f3}</Project>
       <Name>SoapFormula.Bootstrap</Name>
