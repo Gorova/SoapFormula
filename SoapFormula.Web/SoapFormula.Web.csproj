@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -281,12 +281,12 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{e793a0cd-9d3d-4828-a907-5f16905a0c31}</Project>
-      <Name>BL</Name>
+    <ProjectReference Include="..\SoapFormula.BL\SoapFormula.BL.csproj">
+      <Project>{7267caca-ec45-4f0f-b1a7-96cd5e45277d}</Project>
+      <Name>SoapFormula.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoapFormula.Bootstrap\SoapFormula.Bootstrap.csproj">
-      <Project>{74e33f41-1a66-42c9-bf47-ff431dc581f3}</Project>
+      <Project>{74E33F41-1A66-42C9-BF47-FF431DC581F3}</Project>
       <Name>SoapFormula.Bootstrap</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoapFormula.Common\SoapFormula.Common.csproj">

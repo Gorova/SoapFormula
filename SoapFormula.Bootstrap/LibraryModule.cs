@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
-using BL.Handlers;
-using BL.Handlers.Interface;
 using Ninject.Modules;
+using SoapFormula.BL.Handlers;
+using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.Common.DTO;
 using SoapFormula.DAL;
 using SoapFormula.DAL.Repository;
 using SoapFormula.DAL.Repository.Interface;
@@ -19,7 +20,7 @@ namespace SoapFormula.Bootstrap
         {
             Bind<DbContext>().To<SoapFormulaContext>();
             Bind<IRepository>().To<Repository>();
-            Bind<IHandler>().To<ManufacturerHandler>();
+            Bind<IHandler<ManufacturerDto>>().To<ManufacturerHandler>();
         }
     }
 }

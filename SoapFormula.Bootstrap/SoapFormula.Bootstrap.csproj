@@ -65,9 +65,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{E793A0CD-9D3D-4828-A907-5F16905A0C31}</Project>
-      <Name>BL</Name>
+    <ProjectReference Include="..\SoapFormula.BL\SoapFormula.BL.csproj">
+      <Project>{7267caca-ec45-4f0f-b1a7-96cd5e45277d}</Project>
+      <Name>SoapFormula.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoapFormula.Common\SoapFormula.Common.csproj">
       <Project>{d89d8be6-a872-47cf-95aa-2f935461a658}</Project>
@@ -77,6 +77,9 @@
       <Project>{0d20d530-6df2-4eb9-b685-a850fff61d66}</Project>
       <Name>SoapFormula.DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
