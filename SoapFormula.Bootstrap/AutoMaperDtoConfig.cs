@@ -8,17 +8,26 @@ namespace SoapFormula.Bootstrap
     {
         public static void RegisterDtoMapping()
         {
+            EntityToDto();
+            DtoToEntity();
+        }
+
+        private static void EntityToDto()
+        {
             Mapper.CreateMap<Category, CategoryDto>();
-            Mapper.CreateMap<CategoryDto, Category>();
-
             Mapper.CreateMap<File, FileDto>();
-            Mapper.CreateMap<FileDto, File>();
-
-            Mapper.CreateMap<Manufacturer, ManufacturerDto>();
-            Mapper.CreateMap<ManufacturerDto, Manufacturer>();
-
             Mapper.CreateMap<Product, ProductDto>();
+            Mapper.CreateMap<Manufacturer, ManufacturerDto>();
+        }
+
+        private static void DtoToEntity()
+        {
+            Mapper.CreateMap<CategoryDto, Category>();
+            Mapper.CreateMap<FileDto, File>();
             Mapper.CreateMap<ProductDto, Product>();
+            Mapper.CreateMap<ManufacturerDto, Manufacturer>()
+                .ForMember(d => d.Products, opt => opt.Ignore());
         }
     }
 }
+

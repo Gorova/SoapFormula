@@ -56,8 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Handlers\IHandler.cs" />
+    <Compile Include="Handlers\BaseHandler.cs" />
     <Compile Include="Handlers\CategoryHandler.cs" />
-    <Compile Include="Handlers\Interface\IHandler.cs" />
     <Compile Include="Handlers\ManufacturerHandler.cs" />
     <Compile Include="Handlers\ProductHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

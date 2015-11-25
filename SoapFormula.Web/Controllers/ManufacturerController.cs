@@ -26,7 +26,8 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Index()
         {
-            var viewModel = Mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerViewModel>>(repository.Get<Manufacturer>());
+            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
+            var viewModel = Mapper.Map<IEnumerable<ManufacturerDto>, IEnumerable<ManufacturerViewModel>>(handler.GetAll());
 
             return View(viewModel);
         }

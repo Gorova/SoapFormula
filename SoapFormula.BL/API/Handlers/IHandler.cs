@@ -1,4 +1,5 @@
-﻿using SoapFormula.Common.Interface;
+﻿using System.Collections.Generic;
+using SoapFormula.Common.Interface;
 
 namespace SoapFormula.BL.Handlers.Interface
 {
@@ -11,5 +12,7 @@ namespace SoapFormula.BL.Handlers.Interface
         void Delete(int id);
 
         void Update(TDto data);
+
+        IEnumerable<TDto> GetAll();
     }
 }
