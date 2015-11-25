@@ -21,6 +21,8 @@ namespace SoapFormula.Bootstrap
             Bind<DbContext>().To<SoapFormulaContext>();
             Bind<IRepository>().To<Repository>();
             Bind<IHandler<ManufacturerDto>>().To<ManufacturerHandler>();
+            Bind<IHandler<CategoryDto>>().To<CategoryHandler>();
+            Bind<IHandler<ProductDto>>().To<ProductHandler>();
         }
     }
 }

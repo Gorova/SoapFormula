@@ -40,7 +40,6 @@ namespace SoapFormula.BL.Handlers
             var manufacturer = repository.Get<Manufacturer>(manufacturerDto.Id);
             manufacturerDto.Products = manufacturer.Products;
             Mapper.Map(manufacturerDto, manufacturer);
-            
             repository.Save();
         }
     }

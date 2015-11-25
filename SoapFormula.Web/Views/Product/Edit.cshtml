@@ -6,9 +6,9 @@
 <h2>Edit Product</h2>
 <table>
     <tr>
-        @*<th>
+        <th>
             edit category @Model.Name
-        </th>*@
+        </th>
     </tr>
     <tr>
         <td>
@@ -23,7 +23,7 @@
                 @Html.TextBoxFor(i => i.Weight)
                 <p> choose manufacturer for edition</p>
                 @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems)
-                <p> choose manufacturer for edition</p>
+                <p> choose category for edition</p>
                 @Html.ListBoxFor(i => i.SelectedIds, Model.CategoryItems)
                 <input type="submit" value="save" />
             }

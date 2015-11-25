@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using SoapFormula.Common.Interface;
+﻿using SoapFormula.Common.Interface;
 
 namespace SoapFormula.BL.Handlers.Interface
 {

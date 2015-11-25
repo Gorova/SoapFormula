@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using SoapFormula.Common.Interface;
 using SoapFormula.DAL.Entities;
 
 namespace SoapFormula.Common.DTO
 {
-    public class ProductDto
+    public class ProductDto : IBase
     {
         public int Id { get; set; }
 
@@ -14,6 +15,8 @@ namespace SoapFormula.Common.DTO
         public int Weight { get; set; }
 
         public int ManufacturerId { get; set; }
+
+        public int[] SelectedIds { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
 
