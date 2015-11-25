@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using SoapFormula.DAL.Entities;
+using SoapFormula.Common.DTO;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.App_Start
@@ -8,17 +8,24 @@ namespace SoapFormula.Web.App_Start
     {
         public static void RegisterMapping()
         {
-            Mapper.CreateMap<Category, CategoryViewModel>();
-            Mapper.CreateMap<CategoryViewModel, Category>();
+            DtoToViewModel();
+            ViewModelToDto();
+        }
 
-            Mapper.CreateMap<File, FileViewModel>();
-            Mapper.CreateMap<FileViewModel, File>();
+        public static void DtoToViewModel()
+        {
+            Mapper.CreateMap<CategoryDto, CategoryViewModel>();
+            Mapper.CreateMap<FileDto, FileViewModel>();
+            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
+            Mapper.CreateMap<ProductDto, ProductViewModel>();
+        }
 
-            Mapper.CreateMap<Manufacturer, ManufacturerViewModel>();
-            Mapper.CreateMap<ManufacturerViewModel, Manufacturer>();
-                
-            Mapper.CreateMap<Product, ProductViewModel>();
-            Mapper.CreateMap<ProductViewModel, Product>();
+        public static void ViewModelToDto()
+        {
+            Mapper.CreateMap<CategoryViewModel, CategoryDto>();
+            Mapper.CreateMap<FileViewModel, FileDto>();
+            Mapper.CreateMap<ManufacturerViewModel, ManufacturerDto>();
+            Mapper.CreateMap<ProductViewModel, ProductDto>();
         }
     }
 }

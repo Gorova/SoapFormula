@@ -1,21 +1,23 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
-using SoapFormula.DAL.Repository.Interface;
 
 namespace SoapFormula.BL.Handlers
 {
     public class ManufacturerHandler : BaseHandler, IHandler<ManufacturerDto>
     {
-        public ManufacturerHandler(IRepository repository) : base(repository)
+        public ManufacturerHandler(IRepository repository) 
+            : base(repository)
         {
         }
 
         public void Add(ManufacturerDto manufacturerDto)
         {
             var manufacturer = Mapper.Map<ManufacturerDto, Manufacturer>(manufacturerDto);
+
             repository.Add(manufacturer);
             repository.Save();
         }
@@ -27,7 +29,7 @@ namespace SoapFormula.BL.Handlers
             return manufacturerDto;
         }
 
-        public IEnumerable<ManufacturerDto> GetAll()
+        public IEnumerable<ManufacturerDto> Get()
         {
             var manufacturersDto = Mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDto>>(repository.Get<Manufacturer>());
 
@@ -36,7 +38,7 @@ namespace SoapFormula.BL.Handlers
 
         public void Delete(int id)
         {
-            repository.Delete(repository.Get<Manufacturer>(id));
+            repository.Delete<Manufacturer>(id);
             repository.Save();
         }
         
@@ -44,6 +46,7 @@ namespace SoapFormula.BL.Handlers
         {
             var manufacturer = repository.Get<Manufacturer>(manufacturerDto.Id);
             Mapper.Map(manufacturerDto, manufacturer);
+
             repository.Save();
         }
     }

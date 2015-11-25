@@ -24,7 +24,8 @@ namespace SoapFormula.Bootstrap
         {
             Mapper.CreateMap<CategoryDto, Category>();
             Mapper.CreateMap<FileDto, File>();
-            Mapper.CreateMap<ProductDto, Product>();
+            Mapper.CreateMap<ProductDto, Product>()
+                .ForMember(d => d.Manufacturer, opt => opt.Ignore());
             Mapper.CreateMap<ManufacturerDto, Manufacturer>()
                 .ForMember(d => d.Products, opt => opt.Ignore());
         }

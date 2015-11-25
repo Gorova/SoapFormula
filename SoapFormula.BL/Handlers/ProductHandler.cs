@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
-using SoapFormula.DAL.Repository.Interface;
 
 namespace SoapFormula.BL.Handlers
 {
     public class ProductHandler : BaseHandler, IHandler<ProductDto>
     {
-        public ProductHandler(IRepository repository) : base(repository)
+        public ProductHandler(IRepository repository) 
+            : base(repository)
         {
         }
 
@@ -18,7 +19,7 @@ namespace SoapFormula.BL.Handlers
         {
             var product = Mapper.Map<ProductDto, Product>(productDto);
             product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
-            product.Manufacturer = repository.Get<Manufacturer>(productDto.ManufacturerId);
+
             repository.Add(product);
             repository.Save();
         }
@@ -30,7 +31,7 @@ namespace SoapFormula.BL.Handlers
             return productDto;
         }
 
-        public IEnumerable<ProductDto> GetAll()
+        public IEnumerable<ProductDto> Get()
         {
             var productsDto = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(repository.Get<Product>());
 
@@ -39,7 +40,7 @@ namespace SoapFormula.BL.Handlers
 
         public void Delete(int id)
         {
-            repository.Delete(repository.Get<Product>(id));
+            repository.Delete<Product>(id);
             repository.Save();
         }
 
@@ -48,7 +49,7 @@ namespace SoapFormula.BL.Handlers
             var product = repository.Get<Product>(productDto.Id);
             Mapper.Map(productDto, product);
             product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
-            product.Manufacturer = repository.Get<Manufacturer>(productDto.ManufacturerId);
+
             repository.Save();
         }
     }

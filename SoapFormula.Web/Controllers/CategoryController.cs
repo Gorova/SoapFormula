@@ -2,11 +2,11 @@
 using System.Web.Mvc;
 using AutoMapper;
 using Ninject;
-using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.Bootstrap;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
-using SoapFormula.DAL.Repository.Interface;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
@@ -26,15 +26,13 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Index()
         {
-            Mapper.CreateMap<CategoryDto, CategoryViewModel>();
-            var viewModel = Mapper.Map<IEnumerable<CategoryDto>, IEnumerable<CategoryViewModel>>(handler.GetAll());
+            var viewModel = Mapper.Map<IEnumerable<CategoryDto>, IEnumerable<CategoryViewModel>>(handler.Get());
 
             return View(viewModel);
         }
 
         public ActionResult Details(int id)
         {
-            Mapper.CreateMap<CategoryDto, CategoryViewModel>();
             var viewModel = Mapper.Map<CategoryDto, CategoryViewModel>(handler.Get(id));
 
             return View(viewModel);
@@ -50,7 +48,6 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Create(CategoryViewModel viewModel)
         {
-            Mapper.CreateMap<CategoryViewModel, CategoryDto>();
             var dto = Mapper.Map<CategoryViewModel, CategoryDto>(viewModel);
             handler.Add(dto);
 
@@ -60,7 +57,6 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Delete(int id)
         {
             var dto = handler.Get(id);
-            Mapper.CreateMap<CategoryDto, CategoryViewModel>();
             var viewModel = Mapper.Map<CategoryDto, CategoryViewModel>(dto);
 
             return View(viewModel);
@@ -74,7 +70,7 @@ namespace SoapFormula.Web.Controllers
             {
                 return View("NotDelete", model);
             }
-            Mapper.CreateMap<CategoryViewModel, CategoryDto>();
+            
             var dto = Mapper.Map<CategoryViewModel, CategoryDto>(viewModel);
             handler.Delete(dto.Id);
 
@@ -84,7 +80,6 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Edit(int id)
         {
             var dto = handler.Get(id);
-            Mapper.CreateMap<CategoryDto, CategoryViewModel>();
             var viewModel = Mapper.Map<CategoryDto, CategoryViewModel>(dto);
 
             return View(viewModel);
@@ -93,7 +88,6 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Edit(CategoryViewModel viewModel)
         {
-            Mapper.CreateMap<CategoryViewModel, CategoryDto>();
             var dto = Mapper.Map<CategoryViewModel, CategoryDto>(viewModel);
             handler.Update(dto);
 

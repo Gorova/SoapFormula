@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using SoapFormula.DAL.Repository.Interface;
+using SoapFormula.DAL.API.Repositories;
 
 namespace SoapFormula.DAL.Repository
 { 
@@ -28,9 +28,9 @@ namespace SoapFormula.DAL.Repository
             return this.context.Set<T>().Find(id);
         }
 
-        public void Delete<T>(T data) where T : class
+        public void Delete<T>(int id) where T : class
         {
-            this.context.Set<T>().Remove(data);
+            this.context.Set<T>().Remove(this.context.Set<T>().Find(id));
         }
 
         public void Save()

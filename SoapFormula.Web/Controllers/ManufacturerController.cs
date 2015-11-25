@@ -2,11 +2,11 @@
 using System.Web.Mvc;
 using AutoMapper;
 using Ninject;
-using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.Bootstrap;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
-using SoapFormula.DAL.Repository.Interface;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
@@ -26,15 +26,13 @@ namespace SoapFormula.Web.Controllers
 
         public ActionResult Index()
         {
-            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
-            var viewModel = Mapper.Map<IEnumerable<ManufacturerDto>, IEnumerable<ManufacturerViewModel>>(handler.GetAll());
+            var viewModel = Mapper.Map<IEnumerable<ManufacturerDto>, IEnumerable<ManufacturerViewModel>>(handler.Get());
 
             return View(viewModel);
         }
 
         public ActionResult Details(int id)
         {
-            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
             var viewModel = Mapper.Map<ManufacturerDto, ManufacturerViewModel>(handler.Get(id));
 
             return View(viewModel);
@@ -50,7 +48,6 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Create(ManufacturerViewModel viewModel)
         {
-            Mapper.CreateMap<ManufacturerViewModel, ManufacturerDto>();
             var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
             handler.Add(dto);
 
@@ -60,7 +57,6 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Delete(int id)
         {
             var dto = handler.Get(id);
-            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
             var viewModel = Mapper.Map<ManufacturerDto, ManufacturerViewModel>(dto);
 
             return View(viewModel);
@@ -74,7 +70,7 @@ namespace SoapFormula.Web.Controllers
             {
                 return View("NotDelete", model);
             }
-            Mapper.CreateMap<ManufacturerViewModel, ManufacturerDto>();
+
             var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
             handler.Delete(dto.Id);
 
@@ -84,7 +80,6 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Edit(int id)
         {
             var dto = handler.Get(id);
-            Mapper.CreateMap<ManufacturerDto, ManufacturerViewModel>();
             var viewModel = Mapper.Map<ManufacturerDto, ManufacturerViewModel>(dto);
 
             return View(viewModel);
@@ -93,7 +88,6 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Edit(ManufacturerViewModel viewModel)
         {
-            Mapper.CreateMap<ManufacturerViewModel, ManufacturerDto>();
             var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
             handler.Update(dto);
 

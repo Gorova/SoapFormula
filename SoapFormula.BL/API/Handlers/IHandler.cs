@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using SoapFormula.Common.Interface;
 
-namespace SoapFormula.BL.Handlers.Interface
+namespace SoapFormula.BL.API.Handlers
 {
     public interface IHandler<TDto> where TDto : class, IBase
     {
@@ -13,6 +13,6 @@ namespace SoapFormula.BL.Handlers.Interface
 
         void Update(TDto data);
 
-        IEnumerable<TDto> GetAll();
+        IEnumerable<TDto> Get();
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using SoapFormula.BL.Handlers.Interface;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
-using SoapFormula.DAL.Repository.Interface;
 
 namespace SoapFormula.BL.Handlers
 {
@@ -17,6 +17,7 @@ namespace SoapFormula.BL.Handlers
         public void Add(CategoryDto categoryDto)
         {
             var category = Mapper.Map<CategoryDto, Category>(categoryDto);
+
             repository.Add(category);
             repository.Save();
         }
@@ -28,7 +29,7 @@ namespace SoapFormula.BL.Handlers
             return categoryDto;
         }
 
-        public IEnumerable<CategoryDto> GetAll()
+        public IEnumerable<CategoryDto> Get()
         {
             var categoriesDto = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDto>>(repository.Get<Category>());
 
@@ -37,7 +38,7 @@ namespace SoapFormula.BL.Handlers
 
         public void Delete(int id)
         {
-            repository.Delete(repository.Get<Category>(id));
+            repository.Delete<Category>(id);
             repository.Save();
         }
 
@@ -45,6 +46,7 @@ namespace SoapFormula.BL.Handlers
         {
             var category = repository.Get<Category>(categoryDto.Id);
             Mapper.Map(categoryDto, category);
+
             repository.Save();
         }
     }

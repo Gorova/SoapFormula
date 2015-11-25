@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SoapFormula.DAL.Repository.Interface
+namespace SoapFormula.DAL.API.Repositories
 {
     public interface IRepository
     {
@@ -10,7 +10,7 @@ namespace SoapFormula.DAL.Repository.Interface
 
         T Get<T>(int id) where T : class;
 
-        void Delete<T>(T data) where T : class;
+        void Delete<T>(int id) where T : class;
 
         void Save();
     }

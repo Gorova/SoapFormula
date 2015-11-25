@@ -1,11 +1,11 @@
 ﻿using System.Data.Entity;
 using Ninject.Modules;
+using SoapFormula.BL.API.Handlers;
 using SoapFormula.BL.Handlers;
-using SoapFormula.BL.Handlers.Interface;
 using SoapFormula.Common.DTO;
 using SoapFormula.DAL;
+using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Repository;
-using SoapFormula.DAL.Repository.Interface;
 
 namespace SoapFormula.Bootstrap
 {
