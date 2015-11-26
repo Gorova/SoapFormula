@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using SoapFormula.DAL.API.Repositories;
 using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel.Interface;
 
 namespace SoapFormula.Web.ViewModel
 {
-    public class ProductViewModel : IBaseViewModel, ISelectListForViewModel
+    public class ProductViewModel : IBaseViewModel
     {
         public int Id { get; set; }
 
@@ -30,19 +28,5 @@ namespace SoapFormula.Web.ViewModel
         public ICollection<Category> Categories { get; set; } 
 
         public IEnumerable<SelectListItem> FileItems { get; set; }
-
-        public void Init(IRepository repository) 
-        {
-            ManufacturerItems = repository.Get<Manufacturer>()
-                .Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                }).ToList();
-
-            var categories = repository.Get<Category>()
-                .Select(i => new {i.Id, i.Name}).ToList();
-            CategoryItems = new MultiSelectList(categories, "Id", "Name");
-        } 
     }
 }

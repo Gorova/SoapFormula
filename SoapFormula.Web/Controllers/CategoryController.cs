@@ -5,8 +5,6 @@ using Ninject;
 using SoapFormula.BL.API.Handlers;
 using SoapFormula.Bootstrap;
 using SoapFormula.Common.DTO;
-using SoapFormula.DAL.API.Repositories;
-using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
@@ -15,13 +13,11 @@ namespace SoapFormula.Web.Controllers
     {
         private IHandler<CategoryDto> handler;
         private IKernel kernel;
-        private IRepository repository;
-
+        
         public CategoryController()
         {
             this.kernel = Kernel.Initialize();
             this.handler = kernel.Get<IHandler<CategoryDto>>();
-            this.repository = kernel.Get<IRepository>();
         }
 
         public ActionResult Index()
@@ -65,12 +61,6 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Delete(CategoryViewModel viewModel)
         {
-            var model = repository.Get<Category>(viewModel.Id);
-            if (model.Products.Count != 0)
-            {
-                return View("NotDelete", model);
-            }
-            
             var dto = Mapper.Map<CategoryViewModel, CategoryDto>(viewModel);
             handler.Delete(dto.Id);
 

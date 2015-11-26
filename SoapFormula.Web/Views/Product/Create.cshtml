@@ -15,22 +15,21 @@
     </tr>
     <tr>
         <td>
-            @using (Html.BeginForm())
-            {
-                @Html.HiddenFor(i => i.Id)
-                <p> write name of product</p>
-                @Html.TextBoxFor(i => i.Name)
-                <p> write price </p>
-                @Html.TextBoxFor(i => i.Price)
-                <p> write weight</p>
-                @Html.TextBoxFor(i => i.Weight)<br/>
-                <p>manufacturers for choosing</p>
-                @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems, "choose")<br />
-                <p> categories for choosing </p>
-                @Html.ListBoxFor(i => i.SelectedIds, Model.CategoryItems, "choose")<br/>
-               <input type="submit" name="create"/>
-            }
-        </td>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(i => i.Id)
+            <p> write name of product</p>
+            @Html.TextBoxFor(i => i.Name)
+            <p> write price </p>
+            @Html.TextBoxFor(i => i.Price)
+            <p> write weight</p>
+            @Html.TextBoxFor(i => i.Weight)<br/>
+            <p>manufacturers for choosing</p>
+            @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems, "choose")<br/>
+            <p> categories for choosing </p>
+            @Html.ListBoxFor(i => i.SelectedIds, Model.CategoryItems, "choose")<br/>
+            <input type="submit" name="create"/>
+        }
     </tr>
     <tr>
         <td>
