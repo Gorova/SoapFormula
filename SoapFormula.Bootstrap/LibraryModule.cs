@@ -5,7 +5,7 @@ using SoapFormula.BL.Handlers;
 using SoapFormula.Common.DTO;
 using SoapFormula.DAL;
 using SoapFormula.DAL.API.Repositories;
-using SoapFormula.DAL.Repository;
+using SoapFormula.DAL.Repositories;
 
 namespace SoapFormula.Bootstrap
 {

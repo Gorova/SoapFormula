@@ -2,7 +2,7 @@
 using System.Linq;
 using SoapFormula.DAL.API.Repositories;
 
-namespace SoapFormula.DAL.Repository
+namespace SoapFormula.DAL.Repositories
 { 
     public class Repository : IRepository
     {

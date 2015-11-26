@@ -38,19 +38,7 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Create()
         {
             var viewModel = new ProductViewModel();
-
-            var categories = kernel.Get<IHandler<CategoryDto>>().Get();
-            var listCategories = categories
-                    .Select(i => new {i.Id, i.Name}).ToList();
-            viewModel.CategoryItems = new MultiSelectList(listCategories, "Id", "Name");
-
-            var manufacturers = kernel.Get<IHandler<ManufacturerDto>>().Get();
-            viewModel.ManufacturerItems = manufacturers
-                .Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                }).ToList();
+            GetLists(viewModel);
 
             return View(viewModel);
         }
@@ -85,20 +73,8 @@ namespace SoapFormula.Web.Controllers
         {
             var dto = handler.Get(id);
             var viewModel = Mapper.Map<ProductDto, ProductViewModel>(dto);
-
-            var categories = kernel.Get<IHandler<CategoryDto>>().Get();
-            var listCategories = categories
-                .Select(i => new { i.Id, i.Name }).ToList();
-            viewModel.CategoryItems = new MultiSelectList(listCategories, "Id", "Name");
-
-            var manufacturers = kernel.Get<IHandler<ManufacturerDto>>().Get();
-            viewModel.ManufacturerItems = manufacturers
-                .Select(i => new SelectListItem
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                }).ToList();
-
+            GetLists(viewModel);
+            
             return View(viewModel);
         }
         
@@ -109,6 +85,22 @@ namespace SoapFormula.Web.Controllers
             handler.Update(dto);
 
             return RedirectToAction("Index");
+        }
+
+        public void GetLists(ProductViewModel viewModel)
+        {
+            var categories = kernel.Get<IHandler<CategoryDto>>().Get();
+            var listCategories = categories
+                    .Select(i => new { i.Id, i.Name }).ToList();
+            viewModel.CategoryItems = new MultiSelectList(listCategories, "Id", "Name");
+
+            var manufacturers = kernel.Get<IHandler<ManufacturerDto>>().Get();
+            viewModel.ManufacturerItems = manufacturers
+                .Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }).ToList();
         }
     }
 }

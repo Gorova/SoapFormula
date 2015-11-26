@@ -4,9 +4,9 @@ namespace SoapFormula.BL.Handlers
 {
     public abstract class BaseHandler
     {
-        public IRepository repository;
+        protected  IRepository repository;
 
-        public BaseHandler(IRepository repository)
+        protected BaseHandler(IRepository repository)
         {
             this.repository = repository;
         }

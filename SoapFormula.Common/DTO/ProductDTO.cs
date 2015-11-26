@@ -18,10 +18,10 @@ namespace SoapFormula.Common.DTO
 
         public int[] SelectedIds { get; set; }
 
-        public virtual ICollection<Category> Categories { get; set; }
+        public ICollection<Category> Categories { get; set; }
 
-        public virtual ICollection<File> Files { get; set; }
+        public ICollection<File> Files { get; set; }
 
-        public virtual Manufacturer Manufacturer { get; set; }
+        public Manufacturer Manufacturer { get; set; }
     }
 }

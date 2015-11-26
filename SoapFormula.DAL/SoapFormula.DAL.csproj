@@ -58,7 +58,7 @@
     <Compile Include="Entities\Manufacturer.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
     <Compile Include="SoapFormulaContext.cs" />
   </ItemGroup>
   <ItemGroup>
