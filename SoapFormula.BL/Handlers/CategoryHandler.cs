@@ -13,15 +13,7 @@ namespace SoapFormula.BL.Handlers
             : base(repository)
         {
         }
-
-        public void Add(CategoryDto categoryDto)
-        {
-            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
-
-            repository.Add(category);
-            repository.Save();
-        }
-
+        
         public CategoryDto Get(int id)
         {
             var categoryDto = Mapper.Map<Category, CategoryDto>(repository.Get<Category>(id));
@@ -36,9 +28,11 @@ namespace SoapFormula.BL.Handlers
             return categoriesDto;
         }
 
-        public void Delete(int id)
+        public void Add(CategoryDto categoryDto)
         {
-            repository.Delete<Category>(id);
+            var category = Mapper.Map<CategoryDto, Category>(categoryDto);
+
+            repository.Add(category);
             repository.Save();
         }
 
@@ -47,6 +41,12 @@ namespace SoapFormula.BL.Handlers
             var category = repository.Get<Category>(categoryDto.Id);
             Mapper.Map(categoryDto, category);
 
+            repository.Save();
+        }
+
+        public void Delete(int id)
+        {
+            repository.Delete<Category>(id);
             repository.Save();
         }
     }

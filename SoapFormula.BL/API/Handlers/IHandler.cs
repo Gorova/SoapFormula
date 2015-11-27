@@ -5,14 +5,14 @@ namespace SoapFormula.BL.API.Handlers
 {
     public interface IHandler<TDto> where TDto : class, IBase
     {
-        void Add(TDto data);
-
         TDto Get(int id);
 
-        void Delete(int id);
+        IEnumerable<TDto> Get();
+
+        void Add(TDto data);
 
         void Update(TDto data);
 
-        IEnumerable<TDto> Get();
+        void Delete(int id);
     }
 }

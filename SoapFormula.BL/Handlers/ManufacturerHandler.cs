@@ -14,15 +14,7 @@ namespace SoapFormula.BL.Handlers
         {
         }
 
-        public void Add(ManufacturerDto manufacturerDto)
-        {
-            var manufacturer = Mapper.Map<ManufacturerDto, Manufacturer>(manufacturerDto);
-
-            repository.Add(manufacturer);
-            repository.Save();
-        }
-
-        public ManufacturerDto Get(int id)
+       public ManufacturerDto Get(int id)
         {
             var manufacturerDto = Mapper.Map<Manufacturer, ManufacturerDto>(repository.Get<Manufacturer>(id));
             
@@ -36,17 +28,25 @@ namespace SoapFormula.BL.Handlers
             return manufacturersDto;
         }
 
-        public void Delete(int id)
+        public void Add(ManufacturerDto manufacturerDto)
         {
-            repository.Delete<Manufacturer>(id);
+            var manufacturer = Mapper.Map<ManufacturerDto, Manufacturer>(manufacturerDto);
+
+            repository.Add(manufacturer);
             repository.Save();
         }
-        
+
         public void Update(ManufacturerDto manufacturerDto)
         {
             var manufacturer = repository.Get<Manufacturer>(manufacturerDto.Id);
             Mapper.Map(manufacturerDto, manufacturer);
 
+            repository.Save();
+        }
+
+        public void Delete(int id)
+        {
+            repository.Delete<Manufacturer>(id);
             repository.Save();
         }
     }

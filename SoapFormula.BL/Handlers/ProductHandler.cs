@@ -15,15 +15,6 @@ namespace SoapFormula.BL.Handlers
         {
         }
 
-        public void Add(ProductDto productDto)
-        {
-            var product = Mapper.Map<ProductDto, Product>(productDto);
-            product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
-
-            repository.Add(product);
-            repository.Save();
-        }
-
         public ProductDto Get(int id)
         {
             var productDto = Mapper.Map<Product, ProductDto>(repository.Get<Product>(id));
@@ -38,9 +29,12 @@ namespace SoapFormula.BL.Handlers
             return productsDto;
         }
 
-        public void Delete(int id)
+        public void Add(ProductDto productDto)
         {
-            repository.Delete<Product>(id);
+            var product = Mapper.Map<ProductDto, Product>(productDto);
+            product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
+
+            repository.Add(product);
             repository.Save();
         }
 
@@ -50,6 +44,12 @@ namespace SoapFormula.BL.Handlers
             Mapper.Map(productDto, product);
             product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
 
+            repository.Save();
+        }
+
+        public void Delete(int id)
+        {
+            repository.Delete<Product>(id);
             repository.Save();
         }
     }
