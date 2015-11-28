@@ -14,10 +14,10 @@ namespace SoapFormula.DAL.Entities
 
         public int ManufacturerId { get; set; }
 
+        public virtual Manufacturer Manufacturer { get; set; }
+
         public virtual ICollection<Category> Categories { get; set; }
 
         public virtual ICollection<File> Files { get; set; }
-
-        public virtual Manufacturer Manufacturer { get; set; }
     }
 }

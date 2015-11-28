@@ -4,23 +4,13 @@ using System.Web.Mvc;
 using AutoMapper;
 using Ninject;
 using SoapFormula.BL.API.Handlers;
-using SoapFormula.Bootstrap;
 using SoapFormula.Common.DTO;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseCobtroller<ProductDto>
     {
-        private IHandler<ProductDto> handler;
-        private IKernel kernel;
-        
-        public ProductController()
-        {
-            this.kernel = Kernel.Initialize();
-            this.handler = kernel.Get<IHandler<ProductDto>>();
-        }
-
         public ActionResult Index()
         {
             var viewModel = Mapper.Map<IEnumerable<ProductDto>, IEnumerable<ProductViewModel>>(handler.Get());
@@ -38,7 +28,7 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Create()
         {
             var viewModel = new ProductViewModel();
-            GetLists(viewModel);
+            InitializeViewModel(viewModel);
 
             return View(viewModel);
         }
@@ -73,7 +63,7 @@ namespace SoapFormula.Web.Controllers
         {
             var dto = handler.Get(id);
             var viewModel = Mapper.Map<ProductDto, ProductViewModel>(dto);
-            GetLists(viewModel);
+            InitializeViewModel(viewModel);
             
             return View(viewModel);
         }
@@ -87,7 +77,7 @@ namespace SoapFormula.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public void GetLists(ProductViewModel viewModel)
+        public void InitializeViewModel(ProductViewModel viewModel)
         {
             var categories = kernel.Get<IHandler<CategoryDto>>().Get();
             var listCategories = categories

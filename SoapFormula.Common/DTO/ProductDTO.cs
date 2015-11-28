@@ -16,12 +16,12 @@ namespace SoapFormula.Common.DTO
 
         public int ManufacturerId { get; set; }
 
-        public int[] SelectedIds { get; set; }
+        public int[] SelectedCategoriesId { get; set; }
+
+        public Manufacturer Manufacturer { get; set; }
 
         public ICollection<Category> Categories { get; set; }
 
         public ICollection<File> Files { get; set; }
-
-        public Manufacturer Manufacturer { get; set; }
     }
 }

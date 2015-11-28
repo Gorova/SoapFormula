@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using SoapFormula.BL.API.Handlers;
@@ -25,14 +26,14 @@ namespace SoapFormula.BL.Handlers
         public IEnumerable<ProductDto> Get()
         {
             var productsDto = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductDto>>(repository.Get<Product>());
-
+           
             return productsDto;
         }
 
         public void Add(ProductDto productDto)
         {
             var product = Mapper.Map<ProductDto, Product>(productDto);
-            product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
+            product.Categories = productDto.SelectedCategoriesId.Select(i => repository.Get<Category>(i)).ToList();
 
             repository.Add(product);
             repository.Save();
@@ -42,7 +43,7 @@ namespace SoapFormula.BL.Handlers
         {
             var product = repository.Get<Product>(productDto.Id);
             Mapper.Map(productDto, product);
-            product.Categories = productDto.SelectedIds.Select(i => repository.Get<Category>(i)).ToList();
+            product.Categories = productDto.SelectedCategoriesId.Select(i => repository.Get<Category>(i)).ToList();
 
             repository.Save();
         }

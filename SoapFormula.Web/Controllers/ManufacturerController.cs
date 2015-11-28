@@ -1,25 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
-using Ninject;
-using SoapFormula.BL.API.Handlers;
-using SoapFormula.Bootstrap;
 using SoapFormula.Common.DTO;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class ManufacturerController : Controller
+    public class ManufacturerController : BaseCobtroller<ManufacturerDto>
     {
-        private IHandler<ManufacturerDto> handler;
-        private IKernel kernel;
-        
-        public ManufacturerController()
-        {
-            this.kernel = Kernel.Initialize();
-            this.handler = kernel.Get<IHandler<ManufacturerDto>>();
-        }
-
         public ActionResult Index()
         {
             var viewModel = Mapper.Map<IEnumerable<ManufacturerDto>, IEnumerable<ManufacturerViewModel>>(handler.Get());

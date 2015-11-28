@@ -17,11 +17,11 @@ namespace SoapFormula.Web.ViewModel
 
         public int ManufacturerId { get; set; }
 
-        public IEnumerable<SelectListItem> ManufacturerItems { get; set; }
-
         public Manufacturer Manufacturer { get; set; }
 
-        public int[] SelectedIds { get; set; }
+        public int[] SelectedCategoriesId { get; set; }
+
+        public IEnumerable<SelectListItem> ManufacturerItems { get; set; }
 
         public MultiSelectList CategoryItems { get; set; }
 
