@@ -20,7 +20,7 @@ namespace SoapFormula.BL.Handlers
         }
         /// <summary>
         /// method accept id of entity 
-        /// comparison entity from BLL Categoty to CategoryDto
+        /// mapping entity from BLL Categoty to CategoryDto
         /// bethod return CategoryDto
         /// </summary>
         /// <param name="id"></param>
@@ -33,7 +33,7 @@ namespace SoapFormula.BL.Handlers
         }
         /// <summary>
         /// method return IEnumerable collection parametrised by CategoryDto type
-        /// comparison entity from BLL Categoty to CategoryDto 
+        /// mapping entity from BLL Categoty to CategoryDto 
         /// </summary>
         /// <returns></returns>
         public IEnumerable<CategoryDto> Get()
@@ -43,9 +43,10 @@ namespace SoapFormula.BL.Handlers
             return categoriesDto;
         }
         /// <summary>
-        /// method get entity BLL type of CategoryDto
-        /// comparison entity from BLL CategoryDto to Category
-        /// calls repository`s method for adding it to the table of DbSet
+        /// method accepts entity BLL type of CategoryDto
+        /// mapping entity from BLL CategoryDto to Category
+        /// calls repository`s methods for adding it to the table of DbSet
+        /// and for saving changes to database 
         /// </summary>
         /// <param name="categoryDto"></param>
         public void Add(CategoryDto categoryDto)
@@ -55,7 +56,13 @@ namespace SoapFormula.BL.Handlers
             repository.Add(category);
             repository.Save();
         }
-
+        /// <summary>
+        /// method accepts entity BLL type of CategoryDto
+        /// find entity in database by CategoryDto`s id
+        /// mapping entity from BLL CategoryDto to Category
+        /// and calls repository`s method for saving changes to database  
+        /// </summary>
+        /// <param name="categoryDto"></param>
         public void Update(CategoryDto categoryDto)
         {
             var category = repository.Get<Category>(categoryDto.Id);
@@ -63,7 +70,12 @@ namespace SoapFormula.BL.Handlers
 
             repository.Save();
         }
-
+        /// <summary>
+        /// method accept id of entity 
+        /// calls repository`s methods for deleting it to the table of DbSet
+        /// and for saving changes to database
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             repository.Delete<Category>(id);

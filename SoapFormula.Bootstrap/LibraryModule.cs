@@ -9,8 +9,17 @@ using SoapFormula.DAL.Repositories;
 
 namespace SoapFormula.Bootstrap
 {
+    /// <summary>
+    /// class with functional of creating a link between 
+    /// the interfaces and implementation of the class
+    /// </summary>
     public class LibraryModule : NinjectModule
     {
+        /// <summary>
+        /// impplementation of basic method Load
+        /// which calls method of creating a link between 
+        /// the interfaces and implementation of the class
+        /// </summary>
         public override void Load()
         {
             this.InitializeRepositories();
