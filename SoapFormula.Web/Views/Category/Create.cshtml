@@ -7,15 +7,10 @@
 <h2>Create Category</h2>
 <table>
     <tr>
-        <th>write a product category</th>
-        <th></th>
-    </tr>
-    <tr>
         <th>
             @using (Html.BeginForm())
             {
-                @Html.HiddenFor(i=>i.Id)
-                @Html.TextBoxFor(i=>i.Name)
+                @Html.EditorForModel("CategoryEditor")
                 <input type="submit" name="create" />
             }
         </th>

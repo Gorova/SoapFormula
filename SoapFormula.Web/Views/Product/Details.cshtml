@@ -8,33 +8,25 @@
 
 <table>
     <tr>
-        <th>
-            you chosen product: @Model.Name
-        </th>
-    </tr>
-    <tr>
         <td>
-            price: @Model.Price UAH
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Weight: @Model.Weight g.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Manufacture:@Model.Manufacturer.Name
-        </td>
-    </tr>
-    <tr>
-        <td>
+            @Html.LabelFor(i => i.Name)<br/>
+            @Html.DisplayFor(i => i.Name)<br/>
+
+            @Html.LabelFor(i => i.Price)<br/>
+            @Html.DisplayFor(i => i.Price)<br/>
+
+            @Html.LabelFor(i => i.Weight)<br/>
+            @Html.DisplayFor(i => i.Weight)<br/>
+
+            @Html.LabelFor(i => i.Manufacturer)<br/>
+            @Html.DisplayFor(i => i.Manufacturer.Name)<br/>
+            @Html.LabelFor(i => i.Categories)
             <ul>
-            Categories: @foreach (var category in Model.Categories)
-                        {
-                        <li>@category.Name</li>
-                        }
-                </ul>
+                @foreach (var category in Model.Categories)
+                {
+                    <li>@category.Name</li>
+                }
+            </ul>
         </td>
     </tr>
     <tr>

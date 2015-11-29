@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel.Interface;
@@ -22,9 +23,9 @@ namespace SoapFormula.Web.ViewModel
         public int[] SelectedCategoriesId { get; set; }
 
         public IEnumerable<SelectListItem> ManufacturerItems { get; set; }
-
+        
         public MultiSelectList CategoryItems { get; set; }
-
+         
         public ICollection<Category> Categories { get; set; } 
 
         public IEnumerable<SelectListItem> FileItems { get; set; }

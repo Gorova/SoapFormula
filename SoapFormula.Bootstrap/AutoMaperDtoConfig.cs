@@ -5,14 +5,14 @@ using SoapFormula.DAL.Entities;
 namespace SoapFormula.Bootstrap
 {
     /// <summary>
-    /// class with functional of projecting DbSet entities and entities from BLL
+    /// Class AutoMaperDtoConfig with functional of projecting DbSet entities and entities from BLL
     /// </summary>
     public class AutoMaperDtoConfig
     {
         /// <summary>
         /// static constructor which call two methods:
         /// EntityToDto - projecting DbSet entities to entities from BLL
-        ///  DtoToEntity - projecting BLL entities to DbSet entities
+        /// DtoToEntity - projecting BLL entities to DbSet entities
         /// </summary>
         public static void RegisterDtoMapping()
         {

@@ -6,25 +6,10 @@
 <h2>Edit Product</h2>
 <table>
     <tr>
-        <th>
-            edit category @Model.Name
-        </th>
-    </tr>
-    <tr>
         <td>
             @using (Html.BeginForm())
             {
-                @Html.HiddenFor(i => i.Id)
-                <p> edit name</p>
-                @Html.TextBoxFor(i => i.Name)
-                <p>edit price</p>
-                @Html.TextBoxFor(i => i.Price)
-                <p>edit weight</p>
-                @Html.TextBoxFor(i => i.Weight)
-                <p> choose manufacturer for edition</p>
-                @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems)
-                <p> choose category for edition</p>
-                @Html.ListBoxFor(i => i.SelectedCategoriesId, Model.CategoryItems)
+                @Html.EditorForModel("ProductEditor")<br />
                 <input type="submit" value="save" />
             }
          </td>

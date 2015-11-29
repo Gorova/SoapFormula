@@ -8,8 +8,8 @@ namespace SoapFormula.Web.Controllers
 {
     public abstract class BaseCobtroller<TDto> : Controller where TDto : class, IBase
     {
-        protected IHandler<TDto> handler;
         protected IKernel kernel;
+        protected IHandler<TDto> handler;
         
         protected BaseCobtroller()
         {

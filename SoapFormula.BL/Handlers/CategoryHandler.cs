@@ -8,47 +8,53 @@ using SoapFormula.DAL.Entities;
 namespace SoapFormula.BL.Handlers
 {
     /// <summary>
-    /// class inherits from the BaseHandler class 
-    /// IHandler implementation  type parameter is CategoryDto
+    /// Class CategoryHandler inherits from the BaseHandler class 
+    /// implement IHandler generic interface type parameter is CategoryDto
     /// entity from busines ligic layer
+    /// contains main functional for add, get, delete and update DbSet entity
     /// </summary>
     public class CategoryHandler : BaseHandler, IHandler<CategoryDto>
     {
+        /// <summary>
+        /// Inherited constructor
+        /// </summary>
+        /// <param name="repository">Requires argument IRepository type</param>
         public CategoryHandler(IRepository repository)
             : base(repository)
         {
         }
+
         /// <summary>
-        /// method accept id of entity 
-        /// mapping entity from BLL Categoty to CategoryDto
-        /// bethod return CategoryDto
+        /// Method Get find single entity DbSet 
+        /// mapping entity from Categoty DbSet to BLL CategoryDto
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Requires an integer argument</param>
+        /// <returns>Return entity CategoryDto type</returns>
         public CategoryDto Get(int id)
         {
             var categoryDto = Mapper.Map<Category, CategoryDto>(repository.Get<Category>(id));
 
             return categoryDto;
         }
+
         /// <summary>
-        /// method return IEnumerable collection parametrised by CategoryDto type
-        /// mapping entity from BLL Categoty to CategoryDto 
+        /// Method Get take entities as enumerable collection
+        /// mapping entity from Categoty DbSet to BLL CategoryDto 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Return IEnumerable collection parametrised by CategoryDto type</returns>
         public IEnumerable<CategoryDto> Get()
         {
             var categoriesDto = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryDto>>(repository.Get<Category>());
 
             return categoriesDto;
         }
+
         /// <summary>
-        /// method accepts entity BLL type of CategoryDto
-        /// mapping entity from BLL CategoryDto to Category
+        /// Method Add map entity from BLL CategoryDto to Category DbSet
         /// calls repository`s methods for adding it to the table of DbSet
         /// and for saving changes to database 
         /// </summary>
-        /// <param name="categoryDto"></param>
+        /// <param name="categoryDto">Requires argument type of CategoryDto</param>
         public void Add(CategoryDto categoryDto)
         {
             var category = Mapper.Map<CategoryDto, Category>(categoryDto);
@@ -56,13 +62,13 @@ namespace SoapFormula.BL.Handlers
             repository.Add(category);
             repository.Save();
         }
+
         /// <summary>
-        /// method accepts entity BLL type of CategoryDto
-        /// find entity in database by CategoryDto`s id
+        /// Method Update find DbSet entity by CategoryDto`s id
         /// mapping entity from BLL CategoryDto to Category
         /// and calls repository`s method for saving changes to database  
         /// </summary>
-        /// <param name="categoryDto"></param>
+        /// <param name="categoryDto">Requires argument type of CategoryDto</param>
         public void Update(CategoryDto categoryDto)
         {
             var category = repository.Get<Category>(categoryDto.Id);
@@ -70,12 +76,12 @@ namespace SoapFormula.BL.Handlers
 
             repository.Save();
         }
+
         /// <summary>
-        /// method accept id of entity 
-        /// calls repository`s methods for deleting it to the table of DbSet
+        /// Method Delete calls repository`s methods for deleting it to the table of DbSet
         /// and for saving changes to database
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Requires an integer argument</param>
         public void Delete(int id)
         {
             repository.Delete<Category>(id);

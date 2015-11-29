@@ -6,17 +6,11 @@
 <h2>Create Manufacturer</h2>
 
 <table>
-    <tr>
-        <th>
-            write a manufacturer
-        </th> <th></th>
-    </tr>
-    <tr>
+   <tr>
         <td>
         @using (Html.BeginForm())
         {
-            @Html.HiddenFor(i => i.Id)
-            @Html.TextBoxFor(i => i.Name)
+            @Html.EditorForModel("ManufacturerEditor") 
             <input type="submit" value="create"/>
         }
         </td>

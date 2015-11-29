@@ -6,25 +6,21 @@
 <h2>More information</h2>
 <table>
     <tr>
-        <th>
-            you chosen category: @Model.Name
-        </th>
-        <th></th>
-    </tr>
-    <tr>
-        <th>
-            products in this category:
+        <td>
+            @Html.LabelFor(i => i.Name)<br />
+            @Html.DisplayFor(i => i.Name)<br/>
+
+            @Html.LabelFor(i => i.Products)<br/>
             @foreach (var c in Model.Products)
             {
-              <li>  @c.Name </li>
+                <li> @c.Name </li>
             }
-
-        </th>
+        </td>
     </tr>
     <tr>
-        <th>
+        <td>
             @Html.ActionLink("back to main page", "Index")
-        </th>
+        </td>
     </tr>
 </table>
 

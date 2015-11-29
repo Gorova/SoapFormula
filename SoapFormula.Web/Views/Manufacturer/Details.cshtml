@@ -7,18 +7,17 @@
 
 <table>
     <tr>
-        <th>
-            you chosen manufacturer: @Model.Name
-        </th>
-    </tr>
-    <tr>
-            <td>
-            products of manutacture:
-            @foreach (var c in Model.Products)
-            {
-               <li> @c.Name</li>
-            }
-            </td>
+        <td>
+            @Html.LabelFor(i => i.Name)<br/>
+            @Html.DisplayFor(i => i.Name)<br/>
+            @Html.LabelFor(i => i.Products)
+            <ul>
+                @foreach (var c in Model.Products)
+                {
+                    <li> @c.Name</li>
+                }
+            </ul>
+        </td>
         </tr>
     <tr>
         <td>

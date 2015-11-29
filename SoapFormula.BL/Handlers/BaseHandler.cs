@@ -3,8 +3,8 @@
 namespace SoapFormula.BL.Handlers
 {
     /// <summary>
-    /// base class with constructor dependency injection 
-    /// of type IRepository
+    /// Base class BaseHandler with constructor dependency injection 
+    /// accept argument IRepository type
     /// </summary>
     public abstract class BaseHandler
     {

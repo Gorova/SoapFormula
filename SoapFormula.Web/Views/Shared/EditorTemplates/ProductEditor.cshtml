@@ -1,0 +1,18 @@
+﻿@using SoapFormula.Web.ViewModel
+@model ProductViewModel
+
+@Html.LabelFor(i => i.Name)<br />
+@Html.EditorFor(x => x.Name) <br />
+
+@Html.LabelFor(i => i.Price)<br />
+@Html.EditorFor(i => i.Price) <br />
+
+@Html.LabelFor(i => i.Weight)<br />
+@Html.EditorFor(i => i.Weight) <br/>
+
+@Html.LabelFor(i => i.Categories)<br/>
+@Html.ListBoxFor(i => i.SelectedCategoriesId, Model.CategoryItems)<br/>
+
+@Html.LabelFor(i => i.Manufacturer)<br/>
+@Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems)
+

@@ -8,26 +8,10 @@
 
 <table>
     <tr>
-        <th>
-            write a product
-        </th>
-        <th></th>
-    </tr>
-    <tr>
         <td>
         @using (Html.BeginForm())
         {
-            @Html.HiddenFor(i => i.Id)
-            <p> write name of product</p>
-            @Html.TextBoxFor(i => i.Name)
-            <p> write price </p>
-            @Html.TextBoxFor(i => i.Price)
-            <p> write weight</p>
-            @Html.TextBoxFor(i => i.Weight)<br/>
-            <p>manufacturers for choosing</p>
-            @Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems, "choose")<br/>
-            <p> categories for choosing </p>
-            @Html.ListBoxFor(i => i.SelectedCategoriesId, Model.CategoryItems, "choose")<br/>
+            @Html.EditorForModel("ProductEditor")<br/>
             <input type="submit" name="create"/>
         }
     </tr>
