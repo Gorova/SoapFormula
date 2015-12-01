@@ -10,16 +10,13 @@ using SoapFormula.DAL.Repositories;
 namespace SoapFormula.Bootstrap
 {
     /// <summary>
-    /// Class LibraryModule inherits NinjectModule
-    /// contain functional of creating a link between 
-    /// the interfaces and implementation of the class
+    /// Class Inherits NinjectModule contain functional of creating
+    /// a link between the interfaces and implementation of the class
     /// </summary>
     public class LibraryModule : NinjectModule
     {
         /// <summary>
-        /// Virtual method override of Load that is 
-        /// inherited from NinjectModule
-        /// it calls method InitializeRepositories for creating a link between 
+        /// Virtual method it calls method InitializeRepositories for creating a link between 
         /// the interfaces and implementation of the class
         /// </summary>
         public override void Load()

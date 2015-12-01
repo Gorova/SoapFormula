@@ -8,9 +8,7 @@ using SoapFormula.DAL.Entities;
 namespace SoapFormula.BL.Handlers
 {
     /// <summary>
-    /// Class ManufacturerHandler inherits from the BaseHandler class 
-    /// implement IHandler generic interface type parameter is ManufacturerDto
-    /// entity from busines ligic layer
+    /// Class inherits from the BaseHandler class, implement IHandler interface 
     /// contains main functional for add, get, delete and update DbSet entity
     /// </summary>
     public class ManufacturerHandler : BaseHandler, IHandler<ManufacturerDto>
@@ -18,17 +16,16 @@ namespace SoapFormula.BL.Handlers
         /// <summary>
         /// Inherited constructor 
         /// </summary>
-        /// <param name="repository">Requires argument IRepository type</param>
+        /// <param name="repository">IRepository type argument</param>
         public ManufacturerHandler(IRepository repository) 
             : base(repository)
         {
         }
 
         /// <summary>
-        /// Method Get find single entity DbSet
-        /// mapping entity from Manufacturer DbSet to BLL ManufactureryDto
+        /// Get single manufacturer
         /// </summary>
-        /// <param name="id">Requires an integer argument</param>
+        /// <param name="id">Integer argument</param>
         /// <returns>Return entity ManufacturerDto type</returns>
        public ManufacturerDto Get(int id)
         {
@@ -38,10 +35,9 @@ namespace SoapFormula.BL.Handlers
         }
 
         /// <summary>
-        /// Method Get take entities as enumerable collection
-        /// mapping entity from Manufacturer DbSet to BLL ManufacturerDto 
+        /// Get all manufacturers 
         /// </summary>
-        /// <returns>Return IEnumerable collection parametrised by ManufacturerDto type</returns>
+        /// <returns>Return IEnumerable collection of manufacturers</returns>
         public IEnumerable<ManufacturerDto> Get()
         {
             var manufacturersDto = Mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDto>>(repository.Get<Manufacturer>());
@@ -50,11 +46,9 @@ namespace SoapFormula.BL.Handlers
         }
 
         /// <summary>
-        /// Method Add map entity from BLL ManufacturerDto to Manufacturer DbSet
-        /// calls repository`s methods for adding it to the table of DbSet
-        /// and for saving changes to database 
+        /// Add manufacturer and save changes to database 
         /// </summary>
-        /// <param name="manufacturerDto">Requires argument type of ManufacturerDto</param>
+        /// <param name="manufacturerDto">ManufacturerDto type argument</param>
         public void Add(ManufacturerDto manufacturerDto)
         {
             var manufacturer = Mapper.Map<ManufacturerDto, Manufacturer>(manufacturerDto);
@@ -64,10 +58,9 @@ namespace SoapFormula.BL.Handlers
         }
 
         /// <summary>
-        /// Method Update find DbSet entity by ManufacturerDto`s id 
-        /// and calls repository`s method for saving changes to database
+        /// Save manufacturer`s changes
         /// </summary>
-        /// <param name="manufacturerDto">Requires argument type of ManufacturerDto</param>
+        /// <param name="manufacturerDto">ManufacturerDto type argument</param>
         public void Update(ManufacturerDto manufacturerDto)
         {
             var manufacturer = repository.Get<Manufacturer>(manufacturerDto.Id);
@@ -77,10 +70,9 @@ namespace SoapFormula.BL.Handlers
         }
 
         /// <summary>
-        /// Method Delete calls repository`s methods for deleting it to the table of DbSet
-        /// and for saving changes to database
+        /// Delete manufacturer and save change to database
         /// </summary>
-        /// <param name="id">Requires an integer argument</param>
+        /// <param name="id">Integer argument</param>
         public void Delete(int id)
         {
             repository.Delete<Manufacturer>(id);

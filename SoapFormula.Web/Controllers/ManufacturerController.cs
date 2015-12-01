@@ -10,12 +10,10 @@ namespace SoapFormula.Web.Controllers
     /// Class with functional for process incoming request
     /// to ManufacturerViewModel. Implements BaseCobtroller
     /// </summary>
-    /// <returns>Return View Index</returns>
     public class ManufacturerController : BaseCobtroller<ManufacturerDto>
     {
         /// <summary>
-        /// Method Index form enumarable collection ManufacturerDto
-        /// and map ManufacturerDto to ManufacturerViewModel
+        /// Get all manufacturers
         /// </summary>
         /// <returns>Return view Index</returns>
         public ActionResult Index()
@@ -26,8 +24,7 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find ManufacturerDto type entity
-        /// and map ManufacturerDto to ManufacturerViewModel
+        /// Get single manufacturer
         /// </summary>
         /// <param name="id">Requires integer argument</param>
         /// <returns>Return view Details</returns>
@@ -39,7 +36,7 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method craete new entity ManufacturerViewModel type
+        /// Method craete new manufacturers 
         /// </summary>
         /// <returns>Return view Create</returns>
         public ActionResult Create()
@@ -50,10 +47,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Create(POST) map ManufacturerViewModel to ManufacturerDto
-        /// calls ManufacturerDto`s method Add for adding entity
+        /// Method(POST) add manufacturer
         /// </summary>
-        /// <param name="viewModel">Requires ManufacturerViewModel entity</param>
+        /// <param name="viewModel">ManufacturerViewModel type entity</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Create(ManufacturerViewModel viewModel)
@@ -65,10 +61,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find ManufacturerDto type entity 
-        /// and map ManufacturerDto to ManufacturerViewModel
+        /// Find single manufacturer
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Delete</returns>
         public ActionResult Delete(int id)
         {
@@ -79,10 +74,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Delete(POST) map ManufacturerViewModel to ManufacturerDto
-        /// calls ManufacturerDto`s methos Delete for deleting entity
+        /// Method(POST) delete one manufacturer
         /// </summary>
-        /// <param name="viewModel">Requires ManufacturerViewModel type argument</param>
+        /// <param name="viewModel">ManufacturerViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Delete(ManufacturerViewModel viewModel)
@@ -94,10 +88,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit find ManufacturerDto type entity
-        /// and map ManufacturerDto to ManufacturerViewModel
+        /// Find single manufacturer 
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Edit</returns>
         public ActionResult Edit(int id)
         {
@@ -108,10 +101,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit(POST) map ManufacturerViewModel to ManufacturerDto
-        /// calls ManufacturerDto`s method for save changes in entity
+        /// Method Edit(POST) save changes in manufacturer
         /// </summary>
-        /// <param name="viewModel">Requires ManufacturerViewModel type argument</param>
+        /// <param name="viewModel">ManufacturerViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Edit(ManufacturerViewModel viewModel)

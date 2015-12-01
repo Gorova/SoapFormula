@@ -16,9 +16,8 @@ namespace SoapFormula.Web.Controllers
     public class ProductController : BaseCobtroller<ProductDto>
     {
         /// <summary>
-        /// Method Index form enumarable collection ProductDto
-        /// and map ProductDto to ProductViewModel
-        /// </summary>
+        /// Get all products
+        ///  </summary>
         /// <returns>Return View Index</returns>
         public ActionResult Index()
         {
@@ -28,10 +27,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find ProductDto type entity
-        /// and map ProductDto to ProductViewModel
+        /// Get single product
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Details</returns>
         public ActionResult Details(int id)
         {
@@ -41,8 +39,8 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method craete new entity ProductViewModel type
-        /// and call private method fo initialization SeletLists
+        /// Method craete new product
+        /// and initialize SeletLists 
         /// </summary>
         /// <returns>Return view Create</returns>
         public ActionResult Create()
@@ -54,10 +52,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Create(POST) map ProductViewModel to ProductDto
-        /// calls ProductDto`s method Add for adding entity
+        /// Method(POST) add product
         /// </summary>
-        /// <param name="viewModel">Requires ProductViewModel entity</param>
+        /// <param name="viewModel">ProductViewModel type entity</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Create(ProductViewModel viewModel)
@@ -69,10 +66,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find ProductDto type entity 
-        /// and map ProductDto to ProductViewModel
+        /// Find single product
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Delete</returns>
         public ActionResult Delete(int id)
         {
@@ -83,10 +79,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Delete(POST) map ProductViewModel to ProductDto
-        /// calls ProductDto`s methos Delete for deleting entity
+        /// Method(POST) delete one product
         /// </summary>
-        /// <param name="viewModel">Requires ProductViewModel type argument</param>
+        /// <param name="viewModel">ProductViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Delete(ProductViewModel viewModel)
@@ -98,11 +93,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit find ProductDto type entity
-        /// and map ProductDto to ProductViewModel
-        /// call private method fo initialization SeletLists 
+        /// Find single product and initialize SeletLists 
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Edit</returns>
         public ActionResult Edit(int id)
         {
@@ -114,10 +107,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit(POST)  map ProductViewModel to ProductDto
-        /// calls ProductDto`s method for save changes in entity
+        /// Method Edit(POST) save changes in product
         /// </summary>
-        /// <param name="viewModel">Requires ProductViewModel type argument</param>
+        /// <param name="viewModel">ProductViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Edit(ProductViewModel viewModel)

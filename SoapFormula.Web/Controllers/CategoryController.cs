@@ -13,8 +13,7 @@ namespace SoapFormula.Web.Controllers
     public class CategoryController : BaseCobtroller<CategoryDto>
     {
         /// <summary>
-        /// Method Index form enumarable collection CategoryDto
-        /// and map CategoryDto to CategoryViewModel
+        /// Get all categories
         /// </summary>
         /// <returns>Return View Index</returns>
         public ActionResult Index()
@@ -25,8 +24,7 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find CategoryDto type entity 
-        /// and map CategoryDto to CategoryViewModel
+        /// Get single category
         /// </summary>
         /// <param name="id">Requires integer argument</param>
         /// <returns>Return view Details</returns>
@@ -38,7 +36,7 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method craete new entity CategoryViewModel type
+        /// Method craete new category 
         /// </summary>
         /// <returns>Return view Create</returns>
         public ActionResult Create()
@@ -49,10 +47,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Create(POST) map CategoryViewModel to CategoryDto
-        /// calls CategoryDto`s method Add for adding entity
+        /// Method(POST) add category
         /// </summary>
-        /// <param name="viewModel">Requires CategoryViewModel entity</param>
+        /// <param name="viewModel">CategoryViewModel type entity</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Create(CategoryViewModel viewModel)
@@ -64,11 +61,10 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Details find CategoryDto type entity 
-        /// and map CategoryDto to CategoryViewModel
+        /// Find single category
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
-        /// <returns>return view Delete</returns>
+        /// <param name="id">integer argument</param>
+        /// <returns>Return view Delete</returns>
         public ActionResult Delete(int id)
         {
             var dto = handler.Get(id);
@@ -78,10 +74,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Delete(POST) map CategoryViewModel to CategoryDto
-        /// calls CategoryDto`s methos Delete for deleting entity
+        /// Method(POST) delete one category
         /// </summary>
-        /// <param name="viewModel">Requires CategoryViewModel type argument</param>
+        /// <param name="viewModel">CategoryViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Delete(CategoryViewModel viewModel)
@@ -93,10 +88,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit find CategoryDto type entity 
-        /// and map CategoryDto to CategoryViewModel
+        /// Find single category 
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">integer argument</param>
         /// <returns>Return view Edit</returns>
         public ActionResult Edit(int id)
         {
@@ -107,10 +101,9 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Method Edit(POST)  map CategoryViewModel to CategoryDto
-        /// calls CategoryDto`s method for save changes in entity
+        /// Method Edit(POST) save changes in category
         /// </summary>
-        /// <param name="viewModel">Requires CategoryViewModel type argument</param>
+        /// <param name="viewModel">CategoryViewModel type argument</param>
         /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Edit(CategoryViewModel viewModel)

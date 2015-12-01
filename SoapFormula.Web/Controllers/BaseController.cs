@@ -7,11 +7,10 @@ using SoapFormula.Common.Interface;
 namespace SoapFormula.Web.Controllers
 {
     /// <summary>
-    /// Generic abstract class BaseCobtroller 
-    /// contain constructor which create Kernel object 
+    /// Abstract class with constructor for creating Kernel object 
     /// and IHandler type object
     /// </summary>
-    /// <typeparam name="TDto">Requires reference type of parameter</typeparam>
+    /// <typeparam name="TDto">reference type of parameter</typeparam>
     public abstract class BaseCobtroller<TDto> : Controller where TDto : class, IBase
     {
         protected IKernel kernel;

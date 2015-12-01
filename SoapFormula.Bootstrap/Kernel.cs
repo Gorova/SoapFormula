@@ -8,9 +8,8 @@ namespace SoapFormula.Bootstrap
     public static class Kernel
     {
         /// <summary>
-        /// Static method Initialize for creating StandartKernel object
-        /// constructor which accept LibraryModule (NinjectModule instances)
-        /// with setup of binding 
+        /// Create StandartKernel object constructor which 
+        /// accept LibraryModule (NinjectModule instances) with setup of binding 
         /// </summary>
         /// <returns>Return StandartKernel object</returns>
         public static StandardKernel Initialize()

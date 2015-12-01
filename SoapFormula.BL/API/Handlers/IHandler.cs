@@ -4,45 +4,41 @@ using SoapFormula.Common.Interface;
 namespace SoapFormula.BL.API.Handlers
 {
     /// <summary>
-    /// Defining of generic interface IHandler
-    /// contains signatures of 5 generic methods
-    /// with reference type parameters:
-    /// get all entities, get single entity,
-    /// adding, edition and deleting of entity
+    /// Contains signatures of 5 generic method for DbSet entities: get entities, 
+    /// get single entity, add, edit, delete
     /// </summary>
-    /// <typeparam name="TDto">Requires reference type of parameter
-    /// and implement IBase interface </typeparam>
+    /// <typeparam name="TDto">Reference and IBase implement type </typeparam>
     public interface IHandler<TDto> where TDto : class, IBase
     {
         /// <summary>
-        /// Method Get finds single entity by Id
+        /// Get single entity 
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">Integer argument</param>
         /// <returns>Return entity</returns>
         TDto Get(int id);
 
         /// <summary>
-        /// Method Get returns collection of entities
+        /// Get all entities
         /// </summary>
         /// <returns>Return IEnumerable collection of entities</returns>
         IEnumerable<TDto> Get();
 
         /// <summary>
-        /// Method Add adds entities
+        /// Add entity
         /// </summary>
-        /// <param name="data">Requires entity`s type argument</param>
+        /// <param name="data">Entity`s type argument</param>
         void Add(TDto data);
 
         /// <summary>
-        /// Method Update saves modified entity 
+        /// Save modified entity 
         /// </summary>
-        /// <param name="data">Requires entity`s type argument</param>
+        /// <param name="data">Entity`s type argument</param>
         void Update(TDto data);
 
         /// <summary>
-        /// Method Delete remove entity
+        /// Remove entity
         /// </summary>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">Integer argument</param>
         void Delete(int id);
     }
 }

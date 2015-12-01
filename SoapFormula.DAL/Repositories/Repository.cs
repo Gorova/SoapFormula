@@ -15,27 +15,24 @@ namespace SoapFormula.DAL.Repositories
         /// <summary>
         /// Constructor dependency injection 
         /// </summary>
-        /// <param name="context">Requires the data context instance</param>
+        /// <param name="context">Data context instance</param>
         public Repository(DbContext context)
         {
             this.context = context;
         }
 
         /// <summary>
-        /// Generic method Add with reference type parameters
-        /// adds it to the table of DbSet
+        /// Add entity
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="data">Requires entity </param>
+        /// <param name="data">Entity`s type argument</param>
         public void Add<T>(T data) where T : class
         {
             this.context.Set<T>().Add(data);
         }
 
         /// <summary>
-        /// Generic method Get with reference type parameters
-        /// method is intended to return all entities as an queryable
-        /// collection
+        /// Get all entities
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns>Return IQueryable collection of entities</returns>
@@ -45,11 +42,10 @@ namespace SoapFormula.DAL.Repositories
         }
 
         /// <summary>
-        /// Generic method Get with reference type parameters
-        /// finds single entity by Id
+        /// Get single entity
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">Integer argument</param>
         /// <returns>Return entity</returns>
         public T Get<T>(int id) where T : class
         {
@@ -57,18 +53,17 @@ namespace SoapFormula.DAL.Repositories
         }
 
         /// <summary>
-        /// Generic method Delete with reference type parameters
-        /// remove entity from the DbSet
+        /// Delete entity
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="id">Requires integer argument</param>
+        /// <param name="id">Integer argument</param>
         public void Delete<T>(int id) where T : class
         {
             this.context.Set<T>().Remove(this.context.Set<T>().Find(id));
         }
 
         /// <summary>
-        /// Method Save saves the changes to database
+        /// Save changes to database
         /// </summary>
         public void Save()
         {
