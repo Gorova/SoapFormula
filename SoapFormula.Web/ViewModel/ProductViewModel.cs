@@ -20,14 +20,12 @@ namespace SoapFormula.Web.ViewModel
 
         public Manufacturer Manufacturer { get; set; }
 
-        public int[] SelectedCategoriesId { get; set; }
-
-        public IEnumerable<SelectListItem> ManufacturerItems { get; set; }
-        
-        public MultiSelectList CategoryItems { get; set; }
-         
         public ICollection<Category> Categories { get; set; } 
 
-        public IEnumerable<SelectListItem> FileItems { get; set; }
+        public int[] SelectedCategoriesId { get; set; }
+
+        public IEnumerable<SelectListItem> AllManufacturers { get; set; }
+
+        public IEnumerable<SelectListItem> AllCategories { get; set; }
     }
 }

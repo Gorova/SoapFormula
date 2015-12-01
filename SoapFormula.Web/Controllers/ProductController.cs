@@ -9,8 +9,17 @@ using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
+    /// <summary>
+    /// Class with functional for process incoming request
+    /// to ProductViewModel. Implements BaseCobtroller
+    /// </summary>
     public class ProductController : BaseCobtroller<ProductDto>
     {
+        /// <summary>
+        /// Method Index form enumarable collection ProductDto
+        /// and map ProductDto to ProductViewModel
+        /// </summary>
+        /// <returns>Return View Index</returns>
         public ActionResult Index()
         {
             var viewModel = Mapper.Map<IEnumerable<ProductDto>, IEnumerable<ProductViewModel>>(handler.Get());
@@ -18,6 +27,12 @@ namespace SoapFormula.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Method Details find ProductDto type entity
+        /// and map ProductDto to ProductViewModel
+        /// </summary>
+        /// <param name="id">Requires integer argument</param>
+        /// <returns>Return view Details</returns>
         public ActionResult Details(int id)
         {
             var viewModel = Mapper.Map<ProductDto, ProductViewModel>(handler.Get(id));
@@ -25,6 +40,11 @@ namespace SoapFormula.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Method craete new entity ProductViewModel type
+        /// and call private method fo initialization SeletLists
+        /// </summary>
+        /// <returns>Return view Create</returns>
         public ActionResult Create()
         {
             var viewModel = new ProductViewModel();
@@ -33,6 +53,12 @@ namespace SoapFormula.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Method Create(POST) map ProductViewModel to ProductDto
+        /// calls ProductDto`s method Add for adding entity
+        /// </summary>
+        /// <param name="viewModel">Requires ProductViewModel entity</param>
+        /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Create(ProductViewModel viewModel)
         {
@@ -42,6 +68,12 @@ namespace SoapFormula.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Method Details find ProductDto type entity 
+        /// and map ProductDto to ProductViewModel
+        /// </summary>
+        /// <param name="id">Requires integer argument</param>
+        /// <returns>Return view Delete</returns>
         public ActionResult Delete(int id)
         {
             var dto = handler.Get(id);
@@ -50,6 +82,12 @@ namespace SoapFormula.Web.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Method Delete(POST) map ProductViewModel to ProductDto
+        /// calls ProductDto`s methos Delete for deleting entity
+        /// </summary>
+        /// <param name="viewModel">Requires ProductViewModel type argument</param>
+        /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Delete(ProductViewModel viewModel)
         {
@@ -59,6 +97,13 @@ namespace SoapFormula.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Method Edit find ProductDto type entity
+        /// and map ProductDto to ProductViewModel
+        /// call private method fo initialization SeletLists 
+        /// </summary>
+        /// <param name="id">Requires integer argument</param>
+        /// <returns>Return view Edit</returns>
         public ActionResult Edit(int id)
         {
             var dto = handler.Get(id);
@@ -67,7 +112,13 @@ namespace SoapFormula.Web.Controllers
             
             return View(viewModel);
         }
-        
+
+        /// <summary>
+        /// Method Edit(POST)  map ProductViewModel to ProductDto
+        /// calls ProductDto`s method for save changes in entity
+        /// </summary>
+        /// <param name="viewModel">Requires ProductViewModel type argument</param>
+        /// <returns>Redirect to method Index</returns>
         [HttpPost]
         public ActionResult Edit(ProductViewModel viewModel)
         {
@@ -77,15 +128,18 @@ namespace SoapFormula.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        public void InitializeViewModel(ProductViewModel viewModel)
+        private void InitializeViewModel(ProductViewModel viewModel)
         {
             var categories = kernel.Get<IHandler<CategoryDto>>().Get();
-            var listCategories = categories
-                    .Select(i => new { i.Id, i.Name }).ToList();
-            viewModel.CategoryItems = new MultiSelectList(listCategories, "Id", "Name");
-
+            viewModel.AllCategories = categories
+                .Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                }).ToList();
+            
             var manufacturers = kernel.Get<IHandler<ManufacturerDto>>().Get();
-            viewModel.ManufacturerItems = manufacturers
+            viewModel.AllManufacturers = manufacturers
                 .Select(i => new SelectListItem
                 {
                     Text = i.Name,

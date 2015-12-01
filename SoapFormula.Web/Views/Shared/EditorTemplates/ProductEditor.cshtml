@@ -11,8 +11,8 @@
 @Html.EditorFor(i => i.Weight) <br/>
 
 @Html.LabelFor(i => i.Categories)<br/>
-@Html.ListBoxFor(i => i.SelectedCategoriesId, Model.CategoryItems)<br/>
+@Html.ListBoxFor(i => i.SelectedCategoriesId, Model.AllCategories)<br/>
 
 @Html.LabelFor(i => i.Manufacturer)<br/>
-@Html.DropDownListFor(i => i.ManufacturerId, Model.ManufacturerItems)
+@Html.DropDownListFor(i => i.ManufacturerId, Model.AllManufacturers)
 

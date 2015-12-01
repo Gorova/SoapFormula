@@ -9,12 +9,6 @@
         <td>
             @Html.LabelFor(i => i.Name)<br />
             @Html.DisplayFor(i => i.Name)<br/>
-
-            @Html.LabelFor(i => i.Products)<br/>
-            @foreach (var c in Model.Products)
-            {
-                <li> @c.Name </li>
-            }
         </td>
     </tr>
     <tr>
