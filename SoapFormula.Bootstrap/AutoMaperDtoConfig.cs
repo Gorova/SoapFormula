@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using SoapFormula.Common.DTO;
 using SoapFormula.DAL.Entities;
 
@@ -24,7 +25,8 @@ namespace SoapFormula.Bootstrap
         {
             Mapper.CreateMap<Category, CategoryDto>();
             Mapper.CreateMap<File, FileDto>();
-            Mapper.CreateMap<Product, ProductDto>();
+            Mapper.CreateMap<Product, ProductDto>()
+                .ForMember(d => d.SelectedCategoriesId, opt => opt.MapFrom(i => i.Categories.Select(n =>n.Id)));
             Mapper.CreateMap<Manufacturer, ManufacturerDto>();
         }
 

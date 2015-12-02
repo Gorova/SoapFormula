@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using SoapFormula.Common.DTO;
+using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.App_Start

@@ -20,11 +20,12 @@
 
             @Html.LabelFor(i => i.Manufacturer)<br/>
             @Html.DisplayFor(i => i.Manufacturer.Name)<br/>
-            @Html.LabelFor(i => i.Categories)
+
+            @Html.LabelFor(i => i.AllCategories)
             <ul>
-                @foreach (var category in Model.Categories)
+                @foreach (var category in Model.AllCategories)
                 {
-                    <li>@category.Name</li>
+                    <li>@category.Text</li>
                 }
             </ul>
         </td>

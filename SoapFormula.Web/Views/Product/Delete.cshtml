@@ -8,7 +8,7 @@
 <table>
     <tr>
         <th>
-            ARE YOU SHURE YOU WANT TO DELETE CATEGORY: @Model.Name
+            ARE YOU SHURE YOU WANT TO DELETE: @Model.Name
         </th>
     </tr>
     <tr>
@@ -16,7 +16,6 @@
             @using (Html.BeginForm())
             {
                 @Html.HiddenFor(i => i.Id)
-                @*@Html.HiddenFor(i => i.ManufacturerId)*@
                 <input type="submit" value="DELETE" />
             }
         </td>

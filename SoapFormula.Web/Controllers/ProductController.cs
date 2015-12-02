@@ -33,7 +33,9 @@ namespace SoapFormula.Web.Controllers
         /// <returns>Return view Details</returns>
         public ActionResult Details(int id)
         {
-            var viewModel = Mapper.Map<ProductDto, ProductViewModel>(handler.Get(id));
+            var dto = handler.Get(id);
+            var viewModel = Mapper.Map<ProductDto, ProductViewModel>(dto);
+            viewModel.AllCategories = dto.Categories.Select(i => new SelectListItem{Text = i.Name});
 
             return View(viewModel);
         }
