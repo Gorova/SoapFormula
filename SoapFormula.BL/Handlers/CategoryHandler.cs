@@ -35,7 +35,7 @@ namespace SoapFormula.BL.Handlers
         }
 
         /// <summary>
-        /// Get all entities 
+        /// Get all categories 
         /// </summary>
         /// <returns>Return IEnumerable collection of categories</returns>
         public IEnumerable<CategoryDto> Get()

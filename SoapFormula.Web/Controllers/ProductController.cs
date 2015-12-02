@@ -42,7 +42,7 @@ namespace SoapFormula.Web.Controllers
 
         /// <summary>
         /// Method craete new product
-        /// and initialize SeletLists 
+        /// and initialize SelectLists 
         /// </summary>
         /// <returns>Return view Create</returns>
         public ActionResult Create()
@@ -95,7 +95,7 @@ namespace SoapFormula.Web.Controllers
         }
 
         /// <summary>
-        /// Find single product and initialize SeletLists 
+        /// Find single product and initialize SelectLists 
         /// </summary>
         /// <param name="id">integer argument</param>
         /// <returns>Return view Edit</returns>
