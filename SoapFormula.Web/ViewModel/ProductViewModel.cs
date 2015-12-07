@@ -19,12 +19,12 @@ namespace SoapFormula.Web.ViewModel
         [DisplayName("PRICE, UAH")]
         [Required(ErrorMessage = "Required '{0}' field")]
         [Range(1, 1000.00, ErrorMessage = "The field '{0}' must be min 1 to 1000.00 and not be a negative number")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         [DisplayName("WEIGHT, gram")]
         [Required(ErrorMessage = "Required '{0}' field")]
         [Range(50, 1000, ErrorMessage = "The field '{0}' must be min 50gram and not be a negative number")]
-        public int Weight { get; set; }
+        public int? Weight { get; set; }
 
         [DisplayName("MANUFACTURER")]
         [Required(ErrorMessage = "Required '{0}' field")]
