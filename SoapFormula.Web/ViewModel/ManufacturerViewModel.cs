@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using SoapFormula.DAL.Entities;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using SoapFormula.Web.ViewModel.Interface;
 
 namespace SoapFormula.Web.ViewModel
@@ -8,6 +8,9 @@ namespace SoapFormula.Web.ViewModel
     {
         public int Id { get; set; }
 
+        [DisplayName("NAME")]
+        [Required(ErrorMessage = "Required '{0}' field")]
+        [StringLength(20, ErrorMessage = "Max length of field '{0}' - 20 symbols")]
         public string Name { get; set; }
     }
 }

@@ -1,22 +1,22 @@
 ﻿@model SoapFormula.Web.ViewModel.ManufacturerViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "More informations";
 }
 
-<h2>Details Manufacturer</h2>
+<h2>@ViewBag.Title</h2>
 
-<table>
-    <tr>
-        <td>
-            @Html.LabelFor(i => i.Name)<br/>
-            @Html.DisplayFor(i => i.Name)<br/>
-        </td>
-        </tr>
-    <tr>
-        <td>
-            @Html.ActionLink("back to main page", "Index")
-        </td>
-    </tr>
-
-
-</table>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(i => i.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(i => i.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("back to main page", "Index")
+</p>
+   

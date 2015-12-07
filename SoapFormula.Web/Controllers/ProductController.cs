@@ -61,10 +61,15 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Create(ProductViewModel viewModel)
         {
-            var dto = Mapper.Map<ProductViewModel, ProductDto>(viewModel);
-            handler.Add(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = Mapper.Map<ProductViewModel, ProductDto>(viewModel);
+                handler.Add(dto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            InitializeViewModel(viewModel);
+            return View(viewModel);
         }
 
         /// <summary>
@@ -76,6 +81,7 @@ namespace SoapFormula.Web.Controllers
         {
             var dto = handler.Get(id);
             var viewModel = Mapper.Map<ProductDto, ProductViewModel>(dto);
+            viewModel.AllCategories = dto.Categories.Select(i => new SelectListItem { Text = i.Name });
 
             return View(viewModel);
         }
@@ -116,10 +122,15 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Edit(ProductViewModel viewModel)
         {
-            var dto = Mapper.Map<ProductViewModel, ProductDto>(viewModel);
-            handler.Update(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = Mapper.Map<ProductViewModel, ProductDto>(viewModel);
+                handler.Update(dto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            InitializeViewModel(viewModel);
+            return View(viewModel);
         }
 
         private void InitializeViewModel(ProductViewModel viewModel)

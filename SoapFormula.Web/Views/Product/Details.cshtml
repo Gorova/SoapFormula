@@ -1,39 +1,57 @@
 ﻿@using System.Web.UI.WebControls
 @model SoapFormula.Web.ViewModel.ProductViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "More informations";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(i => i.Name)
+        </dt>
 
-<table>
-    <tr>
-        <td>
-            @Html.LabelFor(i => i.Name)<br/>
-            @Html.DisplayFor(i => i.Name)<br/>
+        <dd>
+            @Html.DisplayFor(i => i.Name)
+        </dd>
 
-            @Html.LabelFor(i => i.Price)<br/>
-            @Html.DisplayFor(i => i.Price)<br/>
+        <dt>
+            @Html.DisplayNameFor(i => i.Weight)
+        </dt>
 
-            @Html.LabelFor(i => i.Weight)<br/>
-            @Html.DisplayFor(i => i.Weight)<br/>
+        <dd>
+            @Html.DisplayFor(i => i.Weight)
+        </dd>
 
-            @Html.LabelFor(i => i.Manufacturer)<br/>
-            @Html.DisplayFor(i => i.Manufacturer.Name)<br/>
+        <dt>
+            @Html.DisplayNameFor(i => i.Price)
+        </dt>
 
-            @Html.LabelFor(i => i.AllCategories)
-            <ul>
-                @foreach (var category in Model.AllCategories)
-                {
-                    <li>@category.Text</li>
-                }
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            @Html.ActionLink("back to main page", "Index")
-        </td>
-    </tr>
+        <dd>
+            @Html.DisplayFor(i => i.Price)
+        </dd>
 
-</table>
+        <dt>
+            @Html.DisplayNameFor(i => i.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(i => i.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(i => i.AllCategories)
+        </dt>
+
+        @foreach (var category in Model.AllCategories)
+            {
+                <dd>
+                    @category.Text
+                </dd>
+            }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("back to main page", "Index")
+</p>

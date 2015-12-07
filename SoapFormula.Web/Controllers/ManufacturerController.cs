@@ -54,10 +54,15 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Create(ManufacturerViewModel viewModel)
         {
-            var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
-            handler.Add(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
+                handler.Add(dto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View(viewModel);
         }
 
         /// <summary>
@@ -108,10 +113,15 @@ namespace SoapFormula.Web.Controllers
         [HttpPost]
         public ActionResult Edit(ManufacturerViewModel viewModel)
         {
-            var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
-            handler.Update(dto);
+            if (ModelState.IsValid)
+            {
+                var dto = Mapper.Map<ManufacturerViewModel, ManufacturerDto>(viewModel);
+                handler.Update(dto);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View(viewModel);
         }
     }
 }

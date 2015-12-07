@@ -1,23 +1,24 @@
 ﻿@model IEnumerable<SoapFormula.Web.ViewModel.CategoryViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List of categories";
 }
 
-<h2>Index Category</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+     @Html.ActionLink("CREATE NEW", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover">
+    <tr class="active">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("OPERATIONS")
+        </th>
     </tr>
-    @foreach (var item in Model)
-    {
+    @foreach (var item in Model){
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -34,8 +35,6 @@
             @Html.ActionLink("back to main page", "Index", "Home")
         </td>
     </tr>
-    
 </table>
-
 
 

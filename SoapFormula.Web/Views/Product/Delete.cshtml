@@ -1,29 +1,66 @@
 ﻿@model SoapFormula.Web.ViewModel.ProductViewModel
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete product";
 }
 
-<h2>Delete Product</h2>
+<h2>@ViewBag.Title</h2>
 
-<table>
-    <tr>
-        <th>
-            ARE YOU SHURE YOU WANT TO DELETE: @Model.Name
-        </th>
-    </tr>
-    <tr>
-        <td>
-            @using (Html.BeginForm())
-            {
-                @Html.HiddenFor(i => i.Id)
-                <input type="submit" value="DELETE" />
-            }
-        </td>
-    </tr>
-    <tr>
-        <td>
-            FOR CENCELING:
-            @Html.ActionLink("back to main page", "Index")
-        </td>
-    </tr>
-</table>
+<h3>Are you sure you want to delete product</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(i => i.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(i => i.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(i => i.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(i => i.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(i => i.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(i => i.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(i => i.Manufacturer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(i => i.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(i => i.AllCategories)
+        </dt>
+
+        @foreach (var category in Model.AllCategories)
+        {
+            <dd>
+                @category.Text
+            </dd>
+        }
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-actions no-color">
+        @Html.HiddenFor(i => i.Id)
+        <input type="submit" value="delete" class="btn btn-default" />
+            <input type="button" value="cancel" class="btn btn-default" onclick="location.href = '@Url.Action("Index", "Product")'" />
+        </div>
+    }
+</div>
+
+

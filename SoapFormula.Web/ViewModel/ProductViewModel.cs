@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel.Interface;
@@ -9,16 +11,29 @@ namespace SoapFormula.Web.ViewModel
     {
         public int Id { get; set; }
 
+        [DisplayName("NAME")]
+        [Required(ErrorMessage = "Required '{0}' field")]
+        [StringLength(20, ErrorMessage = "Max length of field '{0}' - 20 symbols")]
         public string Name { get; set; }
 
+        [DisplayName("PRICE, UAH")]
+        [Range(1, 1000.00, ErrorMessage = "The field '{0}' must be min 1 to 1000.00 and not be a negative number")]
+        [Required(ErrorMessage = "Required '{0}' field")]
         public decimal Price { get; set; }
 
+        [DisplayName("WEIGHT, gram")]
+        [Range(50, 1000, ErrorMessage = "The field '{0}' must be min 50gram and not be a negative number")]
+        [Required(ErrorMessage = "Required '{0}' field")]
         public int Weight { get; set; }
 
+        [DisplayName("MANUFACTURER")]
+        [Required(ErrorMessage = "Required '{0}' field")]
         public int ManufacturerId { get; set; }
-
+        
         public Manufacturer Manufacturer { get; set; }
 
+        [DisplayName("CATEGORIES")]
+        [Required(ErrorMessage = "Required '{0}' field")]
         public int[] SelectedCategoriesId { get; set; }
 
         public IEnumerable<SelectListItem> AllManufacturers { get; set; }

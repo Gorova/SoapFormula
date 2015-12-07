@@ -1,18 +1,57 @@
 ﻿@using SoapFormula.Web.ViewModel
 @model ProductViewModel
 
-@Html.LabelFor(i => i.Name)<br />
-@Html.EditorFor(x => x.Name) <br />
+<div class="form-horizontal">
+    <hr />
 
-@Html.LabelFor(i => i.Price)<br />
-@Html.EditorFor(i => i.Price) <br />
+    <div class="form-group">
+        @Html.LabelFor(i => i.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Name)
+        </div>
+    </div>
 
-@Html.LabelFor(i => i.Weight)<br />
-@Html.EditorFor(i => i.Weight) <br/>
+    <div class="form-group">
+        @Html.LabelFor(i => i.Price, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(i => i.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Price)
+        </div>
+    </div>
 
-<p>category</p>
-@Html.ListBoxFor(i => i.SelectedCategoriesId, Model.AllCategories)<br/>
+    <div class="form-group">
+        @Html.LabelFor(i => i.Weight, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(i => i.Weight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Weight)
+        </div>
+    </div>
 
-@Html.LabelFor(i => i.Manufacturer)<br/>
-@Html.DropDownListFor(i => i.ManufacturerId, Model.AllManufacturers)
+    <div class="form-group">
+        @Html.LabelFor(i => i.SelectedCategoriesId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.ListBoxFor(i => i.SelectedCategoriesId, Model.AllCategories, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.SelectedCategoriesId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ManufacturerId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(i => i.ManufacturerId, Model.AllManufacturers, "--select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.ManufacturerId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="create" class="btn btn-default" />
+            <input type="button" value="cancel" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Product")'" /> 
+        </div>
+    </div>
+</div>
+        
+        
+    
 

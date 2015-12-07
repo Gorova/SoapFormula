@@ -1,7 +1,24 @@
 ﻿@using SoapFormula.Web.ViewModel
 @model ManufacturerViewModel
 
-@Html.LabelFor(i => i.Name)<br/>
-@Html.EditorFor(i => i.Name)
+<div class="form-horizontal">
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(i => i.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(i => i.Name)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="create" class="btn btn-default" />
+            <input type="button" value="cancel" class="btn btn btn-default" onclick="location.href='@Url.Action("Index", "Manufacturer")'" />
+        </div>
+    </div>
+</div>
+
 
 

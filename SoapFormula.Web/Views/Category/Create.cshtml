@@ -1,23 +1,14 @@
 ﻿@model SoapFormula.Web.ViewModel.CategoryViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create category";
 }
 
-<h2>Create Category</h2>
-<table>
-    <tr>
-        <th>
-            @using (Html.BeginForm())
-            {
-                @Html.EditorForModel("CategoryEditor")
-                <input type="submit" name="create" />
-            }
-        </th>
-    </tr>
-        <tr>
-            <th>
-                @Html.ActionLink("back to main page", "Index")
-            </th>
-        </tr>
-  </table>
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+ {
+    @Html.EditorForModel("CategoryEditor")
+ }
+        
+          
