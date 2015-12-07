@@ -1,9 +1,13 @@
 ﻿@using SoapFormula.Web.ViewModel
 @model ManufacturerViewModel
 
+@Html.AntiForgeryToken()
+
 <div class="form-horizontal">
     <hr />
-
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(i => i.Id)
+    
     <div class="form-group">
         @Html.LabelFor(i => i.Name, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -14,7 +18,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="create" class="btn btn-default" />
+            <input type="submit" value="save" class="btn btn-default" />
             <input type="button" value="cancel" class="btn btn btn-default" onclick="location.href='@Url.Action("Index", "Manufacturer")'" />
         </div>
     </div>
