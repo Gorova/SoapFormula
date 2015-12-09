@@ -1,16 +1,11 @@
-﻿@model SoapFormula.DAL.Entities.Category
+﻿@model SoapFormula.Web.ViewModel.CategoryViewModel
+@{
     ViewBag.Title = "NotDelete";
 }
 
-<h2>deleting category @Model.Name is impossible until it has products</h2>
-<ul>
-    @foreach (var product in Model.Products)
-    {
-        <li>@product.Name</li>
-    }
-</ul>
-@Html.ActionLink("back to main page", "Index")
+<h2>@ViewBag.Title</h2>
 
+<hr />
+<h4>you can`t delete @Model.Name, such as it has products</h4>
 
-
-
+@Html.ActionLink("back to list", "Index")

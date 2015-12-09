@@ -96,7 +96,7 @@ namespace SoapFormula.Web.Controllers
         {
             var dto = Mapper.Map<ProductViewModel, ProductDto>(viewModel);
             handler.Delete(dto.Id);
-
+            
             return RedirectToAction("Index");
         }
 

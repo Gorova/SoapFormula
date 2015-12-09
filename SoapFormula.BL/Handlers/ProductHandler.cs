@@ -78,7 +78,10 @@ namespace SoapFormula.BL.Handlers
         /// <param name="id">Integer argument</param>
         public void Delete(int id)
         {
-            repository.Delete<Product>(id);
+            var product = repository.Get<Product>(id);
+            product.Categories.Clear();
+
+            repository.Delete<Product>(product.Id);
             repository.Save();
         }
     }

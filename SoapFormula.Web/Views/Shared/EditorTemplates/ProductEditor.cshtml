@@ -17,7 +17,7 @@
     <div class="form-group">
         @Html.LabelFor(i => i.Price, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(i => i.Price, new { @class = "form-control" })
+            @Html.EditorFor(i => i.Price, new { @class = "form-control" })
             @Html.ValidationMessageFor(i => i.Price)
         </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="form-group">
         @Html.LabelFor(i => i.SelectedCategoriesId, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.ListBoxFor(i => i.SelectedCategoriesId, Model.AllCategories, new { @class = "form-control" })
+            @Html.ListBoxFor(i => i.SelectedCategoriesId, Model.AllCategories, new { @class = "multiselect-select2" })
             @Html.ValidationMessageFor(i => i.SelectedCategoriesId)
         </div>
     </div>
@@ -54,6 +54,6 @@
     </div>
 </div>
         
-        
+       
     
 
