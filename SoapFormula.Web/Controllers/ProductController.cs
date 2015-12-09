@@ -69,6 +69,7 @@ namespace SoapFormula.Web.Controllers
                 return RedirectToAction("Index");
             }
             InitializeViewModel(viewModel);
+
             return View(viewModel);
         }
 
@@ -130,6 +131,7 @@ namespace SoapFormula.Web.Controllers
                 return RedirectToAction("Index");
             }
             InitializeViewModel(viewModel);
+
             return View(viewModel);
         }
 

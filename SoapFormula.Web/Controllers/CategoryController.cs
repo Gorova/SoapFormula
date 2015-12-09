@@ -87,6 +87,7 @@ namespace SoapFormula.Web.Controllers
         public ActionResult Delete(CategoryViewModel viewModel)
         {
             var category = handler.Get(viewModel.Id);
+
             if (category.Products.Count != 0)
             {
                 var viewModelWithProducts = Mapper.Map(category, viewModel);

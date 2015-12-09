@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
-using System.Web.DynamicData;
 using System.Web.Mvc;
-using Ninject.Infrastructure.Introspection;
 using SoapFormula.DAL.Entities;
 using SoapFormula.Web.ViewModel.Interface;
 
@@ -20,7 +17,7 @@ namespace SoapFormula.Web.ViewModel
         public string Name { get; set; }
 
         [DisplayName("PRICE, UAH")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:n}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N}")]
         [Required(ErrorMessage = "Required '{0}' field")]
         [Range(1.0, 1000.0, ErrorMessage = "The field '{0}' must be min 1 to 1000.00 and not be a negative number")]
         public decimal? Price { get; set; }
