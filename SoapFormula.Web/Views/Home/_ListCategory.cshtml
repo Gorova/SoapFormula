@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SoapFormula.Web.ViewModel.CategoryViewModel>
+
+
+<div class="list-group">
+    <a href="#" class="list-group-item active">CATEGORIES</a>
+    @foreach (var category in Model)
+    {
+        <a href="#" class="list-group-item">@Html.Label(category.Name)
+            <span class="badge pull-right">@category.Products.Count</span></a>
+     }
+</div>
+       
+     

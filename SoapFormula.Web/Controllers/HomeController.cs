@@ -1,12 +1,18 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using AutoMapper;
+using SoapFormula.Common.DTO;
+using SoapFormula.Web.ViewModel;
 
 namespace SoapFormula.Web.Controllers
 {
-    public class HomeController : Controller 
+    public class HomeController : BaseCobtroller<CategoryDto> 
     {
        public ActionResult Index()
-        {
-           return View();
+       {
+           var viewModel = Mapper.Map<IEnumerable<CategoryDto>, IEnumerable<CategoryViewModel>>(handler.Get());
+
+           return View(viewModel);
         }
         
         public ActionResult About()
